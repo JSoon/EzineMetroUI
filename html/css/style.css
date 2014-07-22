@@ -1,3 +1,55 @@
+.metro div,
+.metro span,
+.metro p {
+  font-family: 'Microsoft YaHei';
+}
 .metro .tile-area {
-  overflow: auto;
+  float: left;
+  margin-right: -999em;
+  background-color: transparent !important;
+  overflow: visible;
+}
+.metro .subheader {
+  color: inherit;
+}
+.metro .subheader:hover {
+  color: inherit;
+}
+.metro .subheader:active {
+  color: inherit;
+}
+.metro .listview .list {
+  border-color: #666;
+}
+.metro .listview .list:hover {
+  border-color: #6faae6;
+  outline-color: #4390df;
+}
+.metro .listview .list:active {
+  border-color: #4390df;
+  outline-color: #1b5da1;
+}
+.metro .listview .list .list-content .list-title {
+  font-size: 18px;
+  line-height: 18px;
+  margin-bottom: 10px;
+  color: #999;
+}
+.metro .listview .list .list-content .list-remark {
+  color: #eee;
+}
+body {
+  background-color: #1d1d1d;
+}
+.metro .label {
+  padding: 6px;
+  margin: 0 5px;
+}
+.metro .label-relay {
+  color: #fff;
+  background-color: #1b6eae;
+}
+.metro .label-original {
+  color: #fff;
+  background-color: #008a00;
 }

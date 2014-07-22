@@ -18,7 +18,8 @@
 
             this.element.on('mouseenter', function(e){
                 that.createHint();
-                o._hint.stop().fadeIn();
+                // o._hint.stop().fadeIn();
+                o._hint.stop().show(); // 关闭 fadeIn 特效
                 e.preventDefault();
             });
 

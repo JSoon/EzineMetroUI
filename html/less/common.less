@@ -2,7 +2,65 @@
 // 公用样式表
 /////////////////////////////////////////////////
 
-// 重写 .metro .tile-area
+// fonts
+@yaHei: 'Microsoft YaHei';
+
+// colors
+@contents-item-border: #4390df;
+@label-original: #008a00;
+@label-relay: #1b6eae;
+
+// 重写 metro-bootstrap.css
+.metro div, .metro span, .metro p {
+    font-family: @yaHei;
+}
 .metro .tile-area {
-    overflow: auto;
+    float: left;
+    margin-right: -999em; // 确保能够完全水平滚动
+    background-color: transparent !important;
+    overflow: visible;
+}
+.metro .subheader {
+    color: inherit;
+    &:hover { color: inherit; }
+    &:active { color: inherit; }
+}
+.metro .listview .list {
+    border-color: #666;
+    &:hover {
+        border-color: lighten(@contents-item-border, 10%);
+        outline-color: @contents-item-border;
+    }
+    &:active {
+        border-color: @contents-item-border;
+        outline-color: darken(@contents-item-border, 20%);
+    }
+    .list-content {
+        .list-title {
+            font-size: 18px;
+            line-height: 18px;
+            margin-bottom: 10px;
+            color: #999;
+        }
+        .list-remark {
+            color: #eee;
+        }
+    }
+}
+
+// custom
+body {
+    background-color: #1d1d1d;
+}
+.metro .label {
+    padding: 6px;
+    margin: 0 5px;
+}
+.metro .label-relay {
+    color: #fff;
+    background-color: @label-relay;
+}
+.metro .label-original {
+    color: #fff;
+    background-color: @label-original;
 }
