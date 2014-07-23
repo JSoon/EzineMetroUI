@@ -2,7 +2,9 @@
 // SJ Ezine JavaScript Library v 0.0.1
 // jQuery v 2.1.1
 // jQuery UI v 1.11.0
+// jQuery mousewheel v 3.1.12
 // Metro UI v 2.0.31
+// Animate.css
 //
 // Copyright 2014 J.Soon Personal
 // Released under the MIT license
@@ -19,7 +21,57 @@ SJ.ezine = {
     // 初始化
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     init: function() {
+        // this.freshDisabled();
         this.scrollHoriz();
+        this.ajaxLoad( '#sjTileArea' );
+    },
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // ajax 加载页面
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ajaxLoad: function( vessel ) {
+        $( vessel ).on( 'click', 'a[data-url]', function() {
+            $( vessel ).removeClass( 'animated bounceInRight bounceInLeft' );
+            var url = $( this ).attr( 'data-url' ),
+                dir = $( this ).attr( 'data-direction' );
+            if ( url ) {
+                $.ajax( {
+                    url: url,
+                    dataType: 'html'
+                } ).done( function( data, textStatus, jqXHR ) {
+                    if ( dir === 'rtl' ) {
+                        $( vessel ).html( data ).addClass( 'animated bounceInLeft' );
+                    } else {
+                        $( vessel ).html( data ).addClass( 'animated bounceInRight' );
+                    }
+                } ).fail( function( jqXHR, textStatus, errorThrown ) {
+                    // console.log( errorThrown );
+                } );
+            } else {
+                // console.log( 'no url' );
+            }
+        } );
+    },
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // 禁止 F5 和 Ctrl+R 刷新
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    freshDisabled: function() {
+        $( document ).bind( 'keydown keyup', function( e ) {
+            if ( e.which === 116 ) { // F5
+                alert( '禁止快捷键刷新页面' );
+                return false;
+            }
+            if ( e.which === 82 && e.ctrlKey ) { // Ctrl + R
+                alert( '禁止快捷键刷新页面' );
+                return false;
+            }
+        } );
+    },
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // 生成随机数
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    randomNum: function( scope ) {
+        var scope = scope || 100000; // 默认随机数范围 0 到 100,000
+        return Math.floor( Math.random() * scope );
     },
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Determine ie browser version from script @ http://support.microsoft.com/kb/167820
@@ -52,5 +104,43 @@ SJ.ezine = {
         } );
     }
 }
-
 SJ.ezine.init();
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// jquery ajax 全局配置
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$.ajaxSetup( {
+    global: true, // 全局配置是否生效
+    aysnc: true, // 是否异步
+    cache: false, // 是否缓存
+    timeout: 10000 // 请求超时时限
+} );
+$( document ).ajaxStart( function() {
+    var src = '../img/loading.gif?' + SJ.ezine.randomNum();
+    // add loading mask
+    var $sjLoading = $( '<div id="sjLoading"><img src="' + src + '" class="img-rounded" alt="loading..." /></div>' );
+    $( 'body' ).append( $sjLoading );
+    var h = $( window ).height() / 2 - 132 / 2; // 这里要求事先确定图片高度
+    $( '#sjLoading > img' ).css( 'margin-top', h );
+    $( '#sjLoading' ).show();
+    // console.log('ajaxStart');
+} ).ajaxComplete( function( event, xhr, settings ) {
+    // console.log('ajaxComplete');
+} ).ajaxStop( function() {
+    $( '#sjLoading' ).delay( 0 ).fadeOut( function() {
+        $( this ).remove();
+    } );
+    // console.log('ajaxStop');
+} ).ajaxError( function( jqXHR, textStatus, errorThrown ) {
+    if ( textStatus == 'notmodified' ) {
+        alert( 'notmodified' );
+    } else if ( textStatus == 'error' ) {
+        alert( 'error' );
+    } else if ( textStatus == 'timeout' ) {
+        alert( 'timeout' );
+    } else if ( textStatus == 'abort' ) {
+        alert( 'abort' );
+    } else if ( textStatus == 'parsererror' ) {
+        alert( 'parsererror' );
+    }
+} );

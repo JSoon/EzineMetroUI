@@ -1,87 +1,58 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>SJ Metro Ezine</title>
-    <meta name="keywords" content="SJ Metro Ezine">
-    <meta name="description" content="SJ Metro Ezine v0.0.1">
-    <meta name="author" content="J.Soon">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="../lib/metro-ui/2.0.31/css/metro-bootstrap.css">
-    <link rel="stylesheet" href="../lib/metro-ui/2.0.31/css/iconFont.css">
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-
-<body class="metro">
-    <!-- .tile-area -->
-    <div class="tile-area tile-area-dark">
-        <h1 class="tile-area-title fg-white">
-            <a href="#"><i class="icon-arrow-left-3 smaller on-left-more"></i>Season 1<small class="subheader on-right-more">Contents</small></a>
-        </h1>
-        <div class="tile-group">
-            <div class="tile-group-title"><i class="icon-list smaller on-left-more"></i>Section 1</div>
-            <div class="listview">
-                <a href="#" class="list" data-hint="思源黑体, 一款好用的开源中文字体" data-hint-position="top">
-                    <div class="list-content">
-                        <img class="icon" src="http://lorempixel.com/124/125/animals/3" alt="">
-                        <div class="data">
-                            <span class="list-title">思源黑体, 一款好用的开源中文字体</span>
-                            <span class="list-remark">NovaDNG<span class="label label-relay">转</span></span>
-                        </div>
-                    </div>
-                </a>
-                <a href="#" class="list" data-hint="什么是致敬，什么是抄袭？" data-hint-position="top">
-                    <div class="list-content">
-                        <img class="icon" src="http://lorempixel.com/125/125/animals/6" alt="">
-                        <div class="data">
-                            <span class="list-title">什么是致敬，什么是抄袭？</span>
-                            <span class="list-remark">Phoenix小月<span class="label label-original">原</span></span>
-                        </div>
-                    </div>
-                </a>
+<h1 class="tile-area-title">
+    <a data-url="home.html" data-direction="rtl"><i class="icon-arrow-left-3 smaller on-left-more"></i>Season 1<small class="subheader on-right-more">Contents</small></a>
+</h1>
+<div class="tile-group">
+    <div class="tile-group-title"><i class="icon-list smaller on-left-more"></i>Section 1</div>
+    <div class="listview">
+        <a class="list" data-hint="思源黑体, 一款好用的开源中文字体" data-hint-position="top" data-click="transform">
+            <div class="list-content">
+                <img class="icon" src="http://lorempixel.com/124/125/animals/3" alt="">
+                <div class="data">
+                    <span class="list-title">思源黑体, 一款好用的开源中文字体</span>
+                    <span class="list-remark">NovaDNG<span class="label label-relay">转</span></span>
+                </div>
             </div>
-        </div><!-- /.tile-group -->
-        <div class="tile-group">
-            <div class="tile-group-title"><i class="icon-list smaller on-left-more"></i>Section 2</div>
-            <div class="listview">
-                <a href="#" class="list" data-hint="世界上存在过哪些奇特的古生物？" data-hint-position="top">
-                    <div class="list-content">
-                        <img class="icon" src="http://lorempixel.com/124/125/animals/9" alt="">
-                        <div class="data">
-                            <span class="list-title">世界上存在过哪些奇特的古生物？</span>
-                            <span class="list-remark">狡曈<span class="label label-original">原</span></span>
-                        </div>
-                    </div>
-                </a>
-                <a href="#" class="list" data-hint="为什么周星驰现在没有拍出以前那么经典搞笑的电影？" data-hint-position="top">
-                    <div class="list-content">
-                        <img class="icon" src="http://lorempixel.com/125/125/animals/7" alt="">
-                        <div class="data">
-                            <span class="list-title">为什么周星驰现在没有拍出以前那么经典搞笑的电影？</span>
-                            <span class="list-remark">胡戈<span class="label label-original">原</span></span>
-                        </div>
-                    </div>
-                </a>
-                <a href="#" class="list" data-hint="对罗永浩和他的锤子手机的负面评价主要是出于哪些方面的原因？" data-hint-position="top">
-                    <div class="list-content">
-                        <img class="icon" src="http://lorempixel.com/124/125/animals/10" alt="">
-                        <div class="data">
-                            <span class="list-title">对罗永浩和他的锤子手机的负面评价主要是出于哪些方面的原因？</span>
-                            <span class="list-remark">贺仙<span class="label label-relay">转</span></span>
-                        </div>
-                    </div>
-                </a>
+        </a>
+        <a class="list" data-hint="什么是致敬，什么是抄袭？" data-hint-position="top" data-click="transform">
+            <div class="list-content">
+                <img class="icon" src="http://lorempixel.com/125/125/animals/6" alt="">
+                <div class="data">
+                    <span class="list-title">什么是致敬，什么是抄袭？</span>
+                    <span class="list-remark">Phoenix小月<span class="label label-original">原</span></span>
+                </div>
             </div>
-        </div><!-- /.tile-group -->
-    </div><!-- /.tile-area -->
-
-    <script src="../lib/jquery/2.1.1/jquery-2.1.1.js"></script>
-    <script src="../lib/jquery-ui/1.11.0/jquery-ui.js"></script>
-    <script src="../lib/jquery-mousewheel/3.1.12/jquery.mousewheel.js"></script>
-    <script src="../lib/metro-ui/2.0.31/min/metro.min.js"></script>
-    <script src="../js/sj.ezine.js"></script>
-</body>
-
-</html>
+        </a>
+    </div>
+</div><!-- /.tile-group -->
+<div class="tile-group">
+    <div class="tile-group-title"><i class="icon-list smaller on-left-more"></i>Section 2</div>
+    <div class="listview">
+        <a class="list" data-hint="世界上存在过哪些奇特的古生物？" data-hint-position="top" data-click="transform">
+            <div class="list-content">
+                <img class="icon" src="http://lorempixel.com/124/125/animals/9" alt="">
+                <div class="data">
+                    <span class="list-title">世界上存在过哪些奇特的古生物？</span>
+                    <span class="list-remark">狡曈<span class="label label-original">原</span></span>
+                </div>
+            </div>
+        </a>
+        <a class="list" data-hint="为什么周星驰现在没有拍出以前那么经典搞笑的电影？" data-hint-position="top" data-click="transform">
+            <div class="list-content">
+                <img class="icon" src="http://lorempixel.com/125/125/animals/7" alt="">
+                <div class="data">
+                    <span class="list-title">为什么周星驰现在没有拍出以前那么经典搞笑的电影？</span>
+                    <span class="list-remark">胡戈<span class="label label-original">原</span></span>
+                </div>
+            </div>
+        </a>
+        <a class="list" data-hint="对罗永浩和他的锤子手机的负面评价主要是出于哪些方面的原因？" data-hint-position="top" data-click="transform">
+            <div class="list-content">
+                <img class="icon" src="http://lorempixel.com/124/125/animals/10" alt="">
+                <div class="data">
+                    <span class="list-title">对罗永浩和他的锤子手机的负面评价主要是出于哪些方面的原因？</span>
+                    <span class="list-remark">贺仙<span class="label label-relay">转</span></span>
+                </div>
+            </div>
+        </a>
+    </div>
+</div><!-- /.tile-group -->
