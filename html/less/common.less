@@ -31,6 +31,18 @@
     &:hover { color: inherit; }
     &:active { color: inherit; }
 }
+.metro .tile-group .tile-group-title > a {
+    float: left;
+    &:first-child {
+        margin-right: 40px;
+    }
+}
+.metro .tile {
+    background-color: transparent;
+    .tile-content {
+        color: #999;
+    }
+}
 .metro .listview .list {
     border-color: #666;
     &:hover {
@@ -52,6 +64,20 @@
             color: #eee;
         }
     }
+}
+// 滚动条
+.metro .scrollbar-v, .metro .scrollbar-h {
+    background-color: #666;
+}
+.metro .scrollbar-line-h, .metro .scrollbar-line-v, .metro .scrollbar-both {
+    background-color: #333;
+}
+.metro .scrollbar-v-up, .metro .scrollbar-v-down, .metro .scrollbar-h-up, .metro .scrollbar-h-down, .metro .scrollbar-line-v-btn, .metro .scrollbar-line-h-btn {
+    background-color: #333;
+    border: 1px #666 solid;
+}
+.metro .scrollbar-line-v-btn:hover, .metro .scrollbar-line-h-btn:hover {
+    background-color: #666;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

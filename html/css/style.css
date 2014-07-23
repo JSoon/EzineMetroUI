@@ -1,73 +1,107 @@
 .metro div,
 .metro span,
 .metro p {
-    font-family: 'Microsoft YaHei';
+  font-family: 'Microsoft YaHei';
 }
 .metro .tile-area {
-    float: left;
-    margin-right: -999em;
-    background-color: transparent !important;
-    overflow: visible;
+  float: left;
+  margin-right: -999em;
+  background-color: transparent !important;
+  overflow: visible;
 }
 .metro .subheader {
-    color: inherit;
+  color: inherit;
 }
 .metro .subheader:hover {
-    color: inherit;
+  color: inherit;
 }
 .metro .subheader:active {
-    color: inherit;
+  color: inherit;
+}
+.metro .tile-group .tile-group-title > a {
+  float: left;
+}
+.metro .tile-group .tile-group-title > a:first-child {
+  margin-right: 40px;
+}
+.metro .tile {
+  background-color: transparent;
+}
+.metro .tile .tile-content {
+  color: #999;
 }
 .metro .listview .list {
-    border-color: #666;
+  border-color: #666;
 }
 .metro .listview .list:hover {
-    border-color: #6faae6;
-    outline-color: #4390df;
+  border-color: #6faae6;
+  outline-color: #4390df;
 }
 .metro .listview .list:active {
-    border-color: #4390df;
-    outline-color: #1b5da1;
+  border-color: #4390df;
+  outline-color: #1b5da1;
 }
 .metro .listview .list .list-content .list-title {
-    font-size: 18px;
-    line-height: 18px;
-    margin-bottom: 10px;
-    color: #999;
+  font-size: 18px;
+  line-height: 18px;
+  margin-bottom: 10px;
+  color: #999;
 }
 .metro .listview .list .list-content .list-remark {
-    color: #eee;
+  color: #eee;
+}
+.metro .scrollbar-v,
+.metro .scrollbar-h {
+  background-color: #666;
+}
+.metro .scrollbar-line-h,
+.metro .scrollbar-line-v,
+.metro .scrollbar-both {
+  background-color: #333;
+}
+.metro .scrollbar-v-up,
+.metro .scrollbar-v-down,
+.metro .scrollbar-h-up,
+.metro .scrollbar-h-down,
+.metro .scrollbar-line-v-btn,
+.metro .scrollbar-line-h-btn {
+  background-color: #333;
+  border: 1px #666 solid;
+}
+.metro .scrollbar-line-v-btn:hover,
+.metro .scrollbar-line-h-btn:hover {
+  background-color: #666;
 }
 body {
-    background-color: #1d1d1d;
+  background-color: #1d1d1d;
 }
 #sjLoading {
-    display: none;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    background-color: #000000;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 9999;
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
 }
 #sjLoading img {
-    width: 147px;
-    height: 132px;
+  width: 147px;
+  height: 132px;
 }
 a {
-    cursor: pointer !important;
+  cursor: pointer !important;
 }
 .metro .label {
-    padding: 6px;
-    margin: 0 5px;
+  padding: 6px;
+  margin: 0 5px;
 }
 .metro .label-relay {
-    color: #fff;
-    background-color: #1b6eae;
+  color: #fff;
+  background-color: #1b6eae;
 }
 .metro .label-original {
-    color: #fff;
-    background-color: #008a00;
+  color: #fff;
+  background-color: #008a00;
 }
