@@ -38,7 +38,9 @@ SJ.ezine = {
                     url: url,
                     dataType: 'html'
                 } ).done( function( data, textStatus, jqXHR ) {
-                    if ( dir === 'rtl' ) {
+                    console.log( $( '.dhint' ) );
+                    $( '.hint' ).remove(); // 修复页面切换时 .hint 的不消失 bug
+                    if ( dir === 'rtl' ) { // 判断页面进入方向，赋予相应的 CSS3 动画
                         $( vessel ).html( data ).addClass( 'animated bounceInLeft' );
                     } else {
                         $( vessel ).html( data ).addClass( 'animated bounceInRight' );
