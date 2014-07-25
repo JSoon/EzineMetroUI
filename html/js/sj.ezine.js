@@ -120,16 +120,16 @@ $.ajaxSetup( {
 $( document ).ajaxStart( function() {
     var src = '../img/loading.gif?' + SJ.ezine.randomNum();
     // add loading mask
-    var $sjLoading = $( '<div id="sjLoading"><img src="' + src + '" class="img-rounded" alt="loading..." /></div>' );
+    var $sjLoading = $( '<div id="sjLoading"><img src="' + src + '" alt="loading..." /></div>' );
     $( 'body' ).append( $sjLoading );
-    var h = $( window ).height() / 2 - 132 / 2; // 这里要求事先确定图片高度
+    var h = $( window ).height() / 2 - 256 / 2; // 这里要求事先确定图片高度
     $( '#sjLoading > img' ).css( 'margin-top', h );
     $( '#sjLoading' ).show();
     // console.log('ajaxStart');
 } ).ajaxComplete( function( event, xhr, settings ) {
     // console.log('ajaxComplete');
 } ).ajaxStop( function() {
-    $( '#sjLoading' ).delay( 0 ).fadeOut( function() {
+    $( '#sjLoading' ).delay( 1000 ).fadeOut( function() {
         $( this ).remove();
     } );
     // console.log('ajaxStop');
