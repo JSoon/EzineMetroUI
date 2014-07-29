@@ -38,7 +38,7 @@ SJ.ezine = {
                     url: url,
                     dataType: 'html'
                 } ).done( function( data, textStatus, jqXHR ) {
-                    console.log( $( '.dhint' ) );
+                    // console.log( $( '.dhint' ) );
                     $( '.hint' ).remove(); // 修复页面切换时 .hint 的不消失 bug
                     if ( dir === 'rtl' ) { // 判断页面进入方向，赋予相应的 CSS3 动画
                         $( vessel ).html( data ).addClass( 'animated bounceInLeft' );
@@ -115,7 +115,7 @@ $.ajaxSetup( {
     global: true, // 全局配置是否生效
     aysnc: true, // 是否异步
     cache: false, // 是否缓存
-    timeout: 10000 // 请求超时时限
+    timeout: 10 // 请求超时时限
 } );
 $( document ).ajaxStart( function() {
     var src = '../img/loading.gif?' + SJ.ezine.randomNum();
@@ -133,7 +133,8 @@ $( document ).ajaxStart( function() {
         $( this ).remove();
     } );
     // console.log('ajaxStop');
-} ).ajaxError( function( jqXHR, textStatus, errorThrown ) {
+} ).ajaxError( function( event, jqXHR, ajaxSettings, errorThrown ) {
+    var textStatus = jqXHR.statusText;
     if ( textStatus == 'notmodified' ) {
         alert( 'notmodified' );
     } else if ( textStatus == 'error' ) {

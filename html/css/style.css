@@ -20,6 +20,7 @@
 }
 .metro .tile-group .tile-group-title > a {
   float: left;
+  margin-right: 20px;
 }
 .metro .tile-group .tile-group-title > a:first-child {
   margin-right: 40px;
