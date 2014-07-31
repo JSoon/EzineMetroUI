@@ -115,9 +115,9 @@ $.ajaxSetup( {
     global: true, // 全局配置是否生效
     aysnc: true, // 是否异步
     cache: false, // 是否缓存
-    timeout: 10 // 请求超时时限
+    timeout: 10000 // 请求超时时限
 } );
-$( document ).ajaxStart( function() {
+$( document ).ajaxStart( function() { // Triggered only once
     var src = '../img/loading.gif?' + SJ.ezine.randomNum();
     // add loading mask
     var $sjLoading = $( '<div id="sjLoading"><img src="' + src + '" alt="loading..." /></div>' );
@@ -126,14 +126,18 @@ $( document ).ajaxStart( function() {
     $( '#sjLoading > img' ).css( 'margin-top', h );
     $( '#sjLoading' ).show();
     // console.log('ajaxStart');
-} ).ajaxComplete( function( event, xhr, settings ) {
+} ).ajaxSend( function( event, jqXHR, settings ) { // Triggered by every xhr
+    // console.log('ajaxSend');
+} ).ajaxSuccess( function( event, jqXHR, settings ) { // Triggered by every xhr
+    // console.log('ajaxSuccess');
+} ).ajaxComplete( function( event, jqXHR, settings ) { // Triggered by every xhr
     // console.log('ajaxComplete');
-} ).ajaxStop( function() {
+} ).ajaxStop( function() { // Triggered only once
     $( '#sjLoading' ).delay( 1000 ).fadeOut( function() {
         $( this ).remove();
     } );
     // console.log('ajaxStop');
-} ).ajaxError( function( event, jqXHR, ajaxSettings, errorThrown ) {
+} ).ajaxError( function( event, jqXHR, ajaxSettings, errorThrown ) { // Triggered by every xhr
     var textStatus = jqXHR.statusText;
     if ( textStatus == 'notmodified' ) {
         alert( 'notmodified' );

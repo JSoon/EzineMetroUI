@@ -17,14 +17,19 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 重写 metro-bootstrap.css
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-.metro div, .metro span, .metro p {
-    font-family: @yaHei;
-}
+// .metro .header + .metro .subheader,
+// .metro div, .metro span, .metro p {
+//     font-family: @yaHei;
+// }
 .metro .tile-area {
-    float: left;
     margin-right: -999em; // 确保能够完全水平滚动
-    background-color: transparent !important;
+    float: left;
     overflow: visible;
+    background-color: transparent !important;
+}
+.metro .tile-area-dark {
+    padding-bottom: 40px;
+    height: auto;
 }
 .metro .subheader {
     color: inherit;
@@ -39,7 +44,7 @@
     }
 }
 .metro .tile {
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.6);
     .tile-content {
         color: #999;
     }
@@ -55,9 +60,10 @@
         outline-color: darken(@contents-item-border, 20%);
     }
     .list-content {
+        background-color: rgba(0, 0, 0, 0.6);
         .list-title {
-            font-size: 18px;
-            line-height: 18px;
+            font-size: 16px;
+            line-height: 16px;
             margin-bottom: 10px;
             color: #999;
         }
@@ -99,12 +105,6 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// <body>
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-body {
-    background-color: #1d1d1d;
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // <div id="sjLoading">
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #sjLoading {
@@ -121,18 +121,15 @@ body {
         border-radius: 10px;
     }
 }
-a {
-    cursor: pointer !important;
-}
-.metro .label {
-    padding: 6px;
-    margin: 0 5px;
-}
-.metro .label-relay {
-    color: #fff;
-    background-color: @label-relay;
-}
-.metro .label-original {
-    color: #fff;
-    background-color: @label-original;
+// 版权声明
+#sjCopyright {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    line-height: 30px;
+    font-size: 12px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #999;
 }
