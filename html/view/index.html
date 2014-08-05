@@ -19,7 +19,7 @@
 
     <!-- .tile-area -->
     <div id="sjTileArea" class="tile-area tile-area-dark clearfix">
-        <!--[if lt IE 9]>
+        <!--[if lt IE 6]>
         <h1 style="color: #fff !important;">Ouch ! Browser support :</h1>
         <h3 style="color: #fff !important;">IE9+, Chrome, Firefox, Opera, Safari</h3>
         <![endif]-->
@@ -32,6 +32,7 @@
     <script src="../lib/jquery/2.1.1/jquery-2.1.1.js"></script>
     <script src="../lib/jquery-ui/1.11.0/jquery-ui.js"></script>
     <script src="../lib/jquery-mousewheel/3.1.12/jquery.mousewheel.js"></script>
+    <script src="../js/sj.ajax.js"></script>
     <script src="../js/sj.ezine.js"></script>
     <script type="text/javascript">
         // 初始化入口
@@ -43,6 +44,38 @@
         } ).fail( function( jqXHR, textStatus, errorThrown ) {
             // console.log( errorThrown );
         } );
+    </script>
+
+    <script type="text/javascript">
+        function getInternetExplorerVersion()
+        // Returns the version of Internet Explorer or a -1
+        // (indicating the use of another browser).
+        {
+            var rv = -1; // Return value assumes failure.
+            if ( navigator.appName == 'Microsoft Internet Explorer' ) {
+                var ua = navigator.userAgent;
+                var re = new RegExp( "MSIE ([0-9]{1,}[\.0-9]{0,})" );
+                if ( re.exec( ua ) != null )
+                    rv = parseFloat( RegExp.$1 );
+            }
+            return rv;
+        }
+
+        function checkVersion() {
+            var msg = "You're not using Internet Explorer.";
+            var ver = getInternetExplorerVersion();
+
+            if ( ver > -1 ) {
+                // if ( ver >= 8.0 )
+                //     msg = "You're using a recent copy of Internet Explorer."
+                // else
+                //     msg = "You should upgrade your copy of Internet Explorer.";
+                alert(typeof ver + ', ' + ver);
+            }
+            // alert( msg );
+        }
+
+        checkVersion();
     </script>
 
 </body>
