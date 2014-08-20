@@ -51,6 +51,7 @@
   color: #999;
 }
 .metro .listview .list .list-content .list-remark {
+  font-size: 12px;
   color: #eee;
 }
 .metro .scrollbar-v,
@@ -74,6 +75,37 @@
 .metro .scrollbar-line-v-btn:hover,
 .metro .scrollbar-line-h-btn:hover {
   background-color: #666;
+}
+html {
+  cursor: url(../img/cursor.png) 0 0, auto;
+}
+body {
+  background: url(../img/bg.jpg) center center no-repeat;
+  background-color: #1d1d1d;
+  background-attachment: fixed;
+}
+::selection {
+  background: #359945;
+  color: #fff;
+}
+::-moz-selection {
+  background: #359945;
+  color: #fff;
+}
+a {
+  cursor: pointer !important;
+}
+.metro .label {
+  padding: 6px;
+  margin: 0 5px;
+}
+.metro .label-relay {
+  color: #fff;
+  background-color: #1b6eae;
+}
+.metro .label-original {
+  color: #fff;
+  background-color: #008a00;
 }
 #sjLoading {
   display: none;
@@ -102,24 +134,4 @@
   text-align: center;
   background-color: rgba(0, 0, 0, 0.5);
   color: #999;
-}
-body {
-  background: url(../img/bg.jpg) center center no-repeat;
-  background-color: #1d1d1d;
-  background-attachment: fixed;
-}
-a {
-  cursor: pointer !important;
-}
-.metro .label {
-  padding: 6px;
-  margin: 0 5px;
-}
-.metro .label-relay {
-  color: #fff;
-  background-color: #1b6eae;
-}
-.metro .label-original {
-  color: #fff;
-  background-color: #008a00;
 }
