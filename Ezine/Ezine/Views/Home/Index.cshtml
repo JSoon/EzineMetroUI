@@ -1,7 +1,8 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@model IQueryable<Ezine.Models.EzineViewModel>
 <h1 class="tile-area-title">
     <a>
         <img src="../Image/logo_48.png" alt="logo_48">
@@ -10,30 +11,27 @@
 </h1>
 <!-- .tile-group -->
 <div class="tile-group">
-    <a class="tile double double-vertical" data-url="contents.html">
-        <div class="tile-content"><img src="http://lorempixel.com/400/400/cats/7" alt=""></div>
-        <div class="tile-status bg-dark opacity">
-            <span class="label">Season 1 @@ 2013 - 10</span>
-        </div>
-    </a>
-    <a class="tile double double-vertical">
-        <div class="tile-content"><img src="http://lorempixel.com/400/400/cats/8" alt=""></div>
-        <div class="tile-status bg-dark opacity">
-            <span class="label">Season 2 @@ 2013 - 01</span>
-        </div>
-    </a>
-    <a class="tile double double-vertical">
-        <div class="tile-content"><img src="http://lorempixel.com/400/400/cats/9" alt=""></div>
-        <div class="tile-status bg-dark opacity">
-            <span class="label">Season 3 @@ 2014 - 04</span>
-        </div>
-    </a>
-    <a class="tile double double-vertical">
-        <div class="tile-content"><img src="http://lorempixel.com/400/400/cats/10" alt=""></div>
-        <div class="tile-status bg-dark opacity">
-            <span class="label">Season 4 @@ 2014 - 06</span>
-        </div>
-    </a>
+    @foreach (var item in Model)
+    {
+        <a class="tile double double-vertical" data-url="contents.html" data-rel="@item.EzineId">
+            <div class="tile-content"><img src="@item.FilePath@item.OldFileName" alt=""></div>
+            <div class="tile-status bg-dark opacity">
+                <span class="label">@item.Name  @@ @item.PublishDate.ToString("yyyy-MM");</span>
+            </div>
+        </a>
+    }
+
+
 </div><!-- /.tile-group -->
 
 <script src="../lib/metro-ui/2.0.31/min/metro.min.js"></script>
+<script>
+
+    $('div a').on('click', function (e) {
+        var id = $(this).attr('data-rel');
+        window.location.href = 'Section/Index/' + id;
+    });
+
+
+    $('#sjTileArea').addClass('animated bounceInRight');
+</script>

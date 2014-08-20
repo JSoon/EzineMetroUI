@@ -10,27 +10,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     @Styles.Render("~/lib/metro-ui/2.0.31/css/metro-bootstrap.css")
     @Styles.Render("~/lib/metro-ui/2.0.31/css/iconFont.css")
-    @Styles.Render("~/lib/metro-ui/2.0.31/animate/animate.css")
-    @Styles.Render("~/lib/metro-ui/2.0.31/style.css")
+    @Styles.Render("~/lib/animate/animate.css")
+    @Styles.Render("~/Content/style.css")
+
+    @Scripts.Render("~/lib/jquery/2.1.1/jquery-2.1.1.js")
+    @Scripts.Render("~/lib/jquery-ui/1.11.0/jquery-ui.js")
+    @Scripts.Render("~/lib/jquery-mousewheel/3.1.12/jquery.mousewheel.js")
 
 </head>
 <body class="metro">
 
     <div id="sjTileArea" class="tile-area tile-area-dark clearfix">
+        <!--[if lt IE 9]>
+        <h1 style="color: #fff !important;">Ouch ! Browser support :</h1>
+        <h3 style="color: #fff !important;">IE9+, Chrome, Firefox, Opera, Safari</h3>
+        <![endif]-->
         @RenderBody()
-
-
     </div>
-    <footer>
-        <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 应用程序</p>
+    <footer id="sjCopyright">
+        Copyright &copy; 2014 Chengdu Remine Medical Infomation Technology Co., Ltd. All Rights Reserved.
     </footer>
-    @Scripts.Render("~/lib/jquery/2.1.1/jquery-2.1.1.js")
-    @Scripts.Render("~/lib/jquery-ui/1.11.0/jquery-ui.js")
-    @Scripts.Render("~/lib/jquery-mousewheel/3.1.12/jquery.mousewheel.js")
-    @Scripts.Render("~/js/sj.ezine.js")
-    @Scripts.Render("~/lib/jquery/2.1.1/jquery-2.1.1.js")
-    @Scripts.Render("~/lib/jquery/2.1.1/jquery-2.1.1.js")
-    @Scripts.Render("~/lib/jquery/2.1.1/jquery-2.1.1.js")
+    @Scripts.Render("~/Scripts/sj.ajax.js")
+    @Scripts.Render("~/Scripts/sj.ezine.js")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

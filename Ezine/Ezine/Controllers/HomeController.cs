@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ezine.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,15 +9,21 @@ namespace Ezine.Controllers
 {
     public class HomeController : Controller
     {
+        private IEzine repository;
+        public HomeController(IEzine ezineRepository)
+        {
+            repository = ezineRepository;
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var ezines = repository.GetAllList();
+            return View(ezines);
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
