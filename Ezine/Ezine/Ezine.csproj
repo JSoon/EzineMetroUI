@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
@@ -97,12 +100,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
-      <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
-    </Reference>
-    <Reference Include="Antlr3.Runtime">
-      <Private>True</Private>
-      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -137,99 +135,102 @@
     <Compile Include="Models\EzineInfo.cs" />
     <Compile Include="Models\Section.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\EzineRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="css\style.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="img\bg.jpg" />
-    <Content Include="img\loading.gif" />
-    <Content Include="img\logo_48.png" />
-    <Content Include="js\sj.ezine.js" />
-    <Content Include="lib\animate\animate.css" />
-    <Content Include="lib\jquery-mousewheel\3.1.12\Gruntfile.js" />
-    <Content Include="lib\jquery-mousewheel\3.1.12\jquery.mousewheel.js" />
-    <Content Include="lib\jquery-mousewheel\3.1.12\jquery.mousewheel.min.js" />
-    <Content Include="lib\jquery-ui\1.11.0\external\jquery\jquery.js" />
-    <Content Include="lib\jquery-ui\1.11.0\images\animated-overlay.gif" />
-    <Content Include="lib\jquery-ui\1.11.0\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
-    <Content Include="lib\jquery-ui\1.11.0\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
-    <Content Include="lib\jquery-ui\1.11.0\images\ui-bg_flat_10_000000_40x100.png" />
-    <Content Include="lib\jquery-ui\1.11.0\images\ui-bg_glass_100_f6f6f6_1x400.png" />
-    <Content Include="lib\jquery-ui\1.11.0\images\ui-bg_glass_100_fdf5ce_1x400.png" />
-    <Content Include="lib\jquery-ui\1.11.0\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="lib\jquery-ui\1.11.0\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
-    <Content Include="lib\jquery-ui\1.11.0\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
-    <Content Include="lib\jquery-ui\1.11.0\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
-    <Content Include="lib\jquery-ui\1.11.0\images\ui-icons_222222_256x240.png" />
-    <Content Include="lib\jquery-ui\1.11.0\images\ui-icons_228ef1_256x240.png" />
-    <Content Include="lib\jquery-ui\1.11.0\images\ui-icons_ef8c08_256x240.png" />
-    <Content Include="lib\jquery-ui\1.11.0\images\ui-icons_ffd27a_256x240.png" />
-    <Content Include="lib\jquery-ui\1.11.0\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="lib\jquery-ui\1.11.0\index.html" />
-    <Content Include="lib\jquery-ui\1.11.0\jquery-ui.css" />
-    <Content Include="lib\jquery-ui\1.11.0\jquery-ui.js" />
-    <Content Include="lib\jquery-ui\1.11.0\jquery-ui.min.css" />
-    <Content Include="lib\jquery-ui\1.11.0\jquery-ui.min.js" />
-    <Content Include="lib\jquery-ui\1.11.0\jquery-ui.structure.css" />
-    <Content Include="lib\jquery-ui\1.11.0\jquery-ui.structure.min.css" />
-    <Content Include="lib\jquery-ui\1.11.0\jquery-ui.theme.css" />
-    <Content Include="lib\jquery-ui\1.11.0\jquery-ui.theme.min.css" />
-    <Content Include="lib\jquery\2.1.1\jquery-2.1.1.js" />
-    <Content Include="lib\jquery\2.1.1\jquery-2.1.1.min.js" />
-    <Content Include="lib\metro-ui\2.0.31\compress\compressor.js" />
-    <Content Include="lib\metro-ui\2.0.31\css\iconFont.css" />
-    <Content Include="lib\metro-ui\2.0.31\css\metro-bootstrap-responsive.css" />
-    <Content Include="lib\metro-ui\2.0.31\css\metro-bootstrap.css" />
-    <Content Include="lib\metro-ui\2.0.31\dist\metro-ui.js" />
-    <Content Include="lib\metro-ui\2.0.31\fonts\iconFont.dev.svg" />
-    <Content Include="lib\metro-ui\2.0.31\fonts\iconFont.svg" />
-    <Content Include="lib\metro-ui\2.0.31\fonts\metroSysIcons.svg" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-accordion.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-button-set.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-calendar.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-carousel.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-core.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-countdown.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-date-format.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-datepicker.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-dialog.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-drag-tile.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-dropdown.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-fluentmenu.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-global.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-hint.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-initiator.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-input-control.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-listview.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-live-tile.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-loader.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-locale.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-notify.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-panel.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-plugin-template.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-progressbar.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-pull.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-rating.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-scroll.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-slider.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-stepper.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-streamer.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-tab-control.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-table.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-tile-transform.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-times.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-touch-handler.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-treeview.js" />
-    <Content Include="lib\metro-ui\2.0.31\js\metro-wizard.js" />
-    <Content Include="lib\metro-ui\2.0.31\min\iconFont.min.css" />
-    <Content Include="lib\metro-ui\2.0.31\min\metro-bootstrap-responsive.min.css" />
-    <Content Include="lib\metro-ui\2.0.31\min\metro-bootstrap.min.css" />
-    <Content Include="lib\metro-ui\2.0.31\min\metro.min.js" />
+    <Content Include="Image\bg.jpg" />
+    <Content Include="Image\loading.gif" />
+    <Content Include="Image\logo_48.png" />
+    <Content Include="Lib\angularjs\angular-resource.js" />
+    <Content Include="Lib\angularjs\angular-route.js" />
+    <Content Include="Lib\angularjs\angular.js" />
+    <Content Include="Scripts\sj.ezine.js" />
+    <Content Include="Lib\animate\animate.css" />
+    <Content Include="Lib\jquery-mousewheel\3.1.12\Gruntfile.js" />
+    <Content Include="Lib\jquery-mousewheel\3.1.12\jquery.mousewheel.js" />
+    <Content Include="Lib\jquery-mousewheel\3.1.12\jquery.mousewheel.min.js" />
+    <Content Include="Lib\jquery-ui\1.11.0\external\jquery\jquery.js" />
+    <Content Include="Lib\jquery-ui\1.11.0\images\animated-overlay.gif" />
+    <Content Include="Lib\jquery-ui\1.11.0\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Lib\jquery-ui\1.11.0\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Lib\jquery-ui\1.11.0\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Lib\jquery-ui\1.11.0\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Lib\jquery-ui\1.11.0\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Lib\jquery-ui\1.11.0\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Lib\jquery-ui\1.11.0\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Lib\jquery-ui\1.11.0\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Lib\jquery-ui\1.11.0\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Lib\jquery-ui\1.11.0\images\ui-icons_222222_256x240.png" />
+    <Content Include="Lib\jquery-ui\1.11.0\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Lib\jquery-ui\1.11.0\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Lib\jquery-ui\1.11.0\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Lib\jquery-ui\1.11.0\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Lib\jquery-ui\1.11.0\index.html" />
+    <Content Include="Lib\jquery-ui\1.11.0\jquery-ui.css" />
+    <Content Include="Lib\jquery-ui\1.11.0\jquery-ui.js" />
+    <Content Include="Lib\jquery-ui\1.11.0\jquery-ui.min.css" />
+    <Content Include="Lib\jquery-ui\1.11.0\jquery-ui.min.js" />
+    <Content Include="Lib\jquery-ui\1.11.0\jquery-ui.structure.css" />
+    <Content Include="Lib\jquery-ui\1.11.0\jquery-ui.structure.min.css" />
+    <Content Include="Lib\jquery-ui\1.11.0\jquery-ui.theme.css" />
+    <Content Include="Lib\jquery-ui\1.11.0\jquery-ui.theme.min.css" />
+    <Content Include="Lib\jquery\2.1.1\jquery-2.1.1.js" />
+    <Content Include="Lib\jquery\2.1.1\jquery-2.1.1.min.js" />
+    <Content Include="Lib\metro-ui\2.0.31\compress\compressor.js" />
+    <Content Include="Lib\metro-ui\2.0.31\css\iconFont.css" />
+    <Content Include="Lib\metro-ui\2.0.31\css\metro-bootstrap-responsive.css" />
+    <Content Include="Lib\metro-ui\2.0.31\css\metro-bootstrap.css" />
+    <Content Include="Lib\metro-ui\2.0.31\dist\metro-ui.js" />
+    <Content Include="Lib\metro-ui\2.0.31\fonts\iconFont.dev.svg" />
+    <Content Include="Lib\metro-ui\2.0.31\fonts\iconFont.svg" />
+    <Content Include="Lib\metro-ui\2.0.31\fonts\metroSysIcons.svg" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-accordion.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-button-set.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-calendar.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-carousel.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-core.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-countdown.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-date-format.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-datepicker.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-dialog.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-drag-tile.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-dropdown.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-fluentmenu.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-global.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-hint.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-initiator.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-input-control.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-listview.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-live-tile.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-loader.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-locale.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-notify.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-panel.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-plugin-template.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-progressbar.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-pull.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-rating.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-scroll.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-slider.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-stepper.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-streamer.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-tab-control.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-table.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-tile-transform.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-times.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-touch-handler.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-treeview.js" />
+    <Content Include="Lib\metro-ui\2.0.31\js\metro-wizard.js" />
+    <Content Include="Lib\metro-ui\2.0.31\min\iconFont.min.css" />
+    <Content Include="Lib\metro-ui\2.0.31\min\metro-bootstrap-responsive.min.css" />
+    <Content Include="Lib\metro-ui\2.0.31\min\metro-bootstrap.min.css" />
+    <Content Include="Lib\metro-ui\2.0.31\min\metro.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -249,43 +250,25 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
-    <Content Include="lib\jquery\2.1.1\jquery-2.1.1.min.map" />
-    <Content Include="lib\metro-ui\2.0.31\fonts\iconFont.eot" />
-    <Content Include="lib\metro-ui\2.0.31\fonts\iconFont.json" />
-    <Content Include="lib\metro-ui\2.0.31\fonts\iconFont.ttf" />
-    <Content Include="lib\metro-ui\2.0.31\fonts\iconFont.woff" />
-    <Content Include="lib\metro-ui\2.0.31\fonts\metroSysIcons.ttf" />
-    <Content Include="lib\metro-ui\2.0.31\fonts\metroSysIcons.woff" />
-    <Content Include="lib\metro-ui\2.0.31\fonts\OpenSans-Bold.woff" />
-    <Content Include="lib\metro-ui\2.0.31\fonts\OpenSans-Light.woff" />
-    <Content Include="lib\metro-ui\2.0.31\fonts\OpenSans.woff" />
-    <Content Include="lib\metro-ui\2.0.31\fonts\PTSerif-Caption.woff" />
-    <Content Include="lib\metro-ui\2.0.31\js\README.md" />
+    <Content Include="Lib\jquery\2.1.1\jquery-2.1.1.min.map" />
+    <Content Include="Lib\metro-ui\2.0.31\fonts\iconFont.eot" />
+    <Content Include="Lib\metro-ui\2.0.31\fonts\iconFont.json" />
+    <Content Include="Lib\metro-ui\2.0.31\fonts\iconFont.ttf" />
+    <Content Include="Lib\metro-ui\2.0.31\fonts\iconFont.woff" />
+    <Content Include="Lib\metro-ui\2.0.31\fonts\metroSysIcons.ttf" />
+    <Content Include="Lib\metro-ui\2.0.31\fonts\metroSysIcons.woff" />
+    <Content Include="Lib\metro-ui\2.0.31\fonts\OpenSans-Bold.woff" />
+    <Content Include="Lib\metro-ui\2.0.31\fonts\OpenSans-Light.woff" />
+    <Content Include="Lib\metro-ui\2.0.31\fonts\OpenSans.woff" />
+    <Content Include="Lib\metro-ui\2.0.31\fonts\PTSerif-Caption.woff" />
+    <Content Include="Lib\metro-ui\2.0.31\js\README.md" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Manage\Views\web.config" />
