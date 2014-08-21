@@ -7,7 +7,7 @@ using Ninject;
 using Ezine.Abstract;
 using Ezine.Repository;
 
-namespace SportsStore.WebUI.Infrastructure
+namespace Ezine.Infrastructure
 {
     public class NinjectControllerFactory : DefaultControllerFactory
     {

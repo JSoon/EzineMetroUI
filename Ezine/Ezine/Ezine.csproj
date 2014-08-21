@@ -124,6 +124,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Manage\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Manage\Controllers\ArticleController.cs" />
+    <Compile Include="Areas\Manage\Controllers\EzineController.cs" />
+    <Compile Include="Areas\Manage\Controllers\SectionController.cs" />
     <Compile Include="Areas\Manage\ManageAreaRegistration.cs" />
     <Compile Include="Areas\Manage\Models\Account.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -152,11 +155,15 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Image\bg.jpg" />
+    <Content Include="Image\cat.jpg" />
     <Content Include="Image\loading.gif" />
     <Content Include="Image\logo_48.png" />
     <Content Include="Lib\angularjs\angular-resource.js" />
     <Content Include="Lib\angularjs\angular-route.js" />
     <Content Include="Lib\angularjs\angular.js" />
+    <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\controllers.js" />
+    <Content Include="Scripts\jquery-validate.bootstrap-tooltip.min.js" />
     <Content Include="Scripts\sj.ajax.js" />
     <Content Include="Scripts\sj.ezine.js" />
     <Content Include="Lib\animate\animate.css" />
@@ -259,6 +266,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Manage\Views\Article\" />
+    <Folder Include="Areas\Manage\Views\Section\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -285,10 +294,16 @@
     <Content Include="Areas\Manage\Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Manage\Views\Account\Index.cshtml" />
+    <Content Include="Areas\Manage\Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Section\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Manage\Views\Account\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Manage\Views\Ezine\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

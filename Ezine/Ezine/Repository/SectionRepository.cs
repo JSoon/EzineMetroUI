@@ -3,20 +3,27 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Ezine.Models;
+using Ezine.Infrastructure;
 
 namespace Ezine.Repository
 {
     public class SectionRepository : ISection
     {
-        private ISection repository;
+        EFDbContext db = new EFDbContext();
         /// <summary>
         /// 获取杂志的目录根据杂志Id
         /// </summary>
         /// <param name="ezineId"></param>
         /// <returns></returns>
-        public IList<ISection> GetAlListByEzineId(int ezineId)
+        public IList<Section> GetAlListByEzineId(int ezineId)
         {
-            throw new NotImplementedException();
+            var sections = from s in db.Sections
+                           where s.Id == ezineId
+                           select s;
+
+            return sections.ToList<Section>();
         }
+
     }
 }

@@ -15,7 +15,7 @@ namespace Ezine.Areas.Manage.Controllers
             repository = accountRepository;
         }
         // GET: Manage/Account
-        public ActionResult Index()
+        public ActionResult Login()
         {
             return View();
         }
@@ -26,11 +26,28 @@ namespace Ezine.Areas.Manage.Controllers
         /// <param name="userName"></param>
         /// <param name="pwd"></param>
         /// <returns></returns>
-        public ActionResult userLogin(string userName, string pwd)
+        public JsonResult UserLogin(string userName, string userPwd)
         {
-            var account = repository.UserLogin(userName, pwd);
-            
-            return View(account);
+            var account = repository.UserLogin(userName, userPwd);
+            string falg = "";
+            if (account != null)
+            {
+                falg = "success";
+            }
+            else
+            {
+                falg = "false";
+            }
+            return Json(falg);
+        }
+
+        /// <summary>
+        /// 管理首页
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Index()
+        {
+            return View();
         }
 
     }

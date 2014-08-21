@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "封面信息";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+<div class="table-responsive" ng-controller="ezineList">
+    <table class="table">
+        <thead>
+            <tr>
+                <td>名称</td>
+                <td>日期</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in ezines">
+                <td>{{item.Name}}</td>
+                <td>{{item.PublishDate | date:"yyyy-MM-dd" }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

@@ -1,10 +1,41 @@
-﻿<!DOCTYPE html>
+﻿<!--
+                 :!'                      .'`.
+                :||!!'                    `'``.
+               .;!!!!!;:::::;;:`     `;%;`':'````''::'''.
+               .!%|;;!!!;;!;!!!!!;;!|%$$;.':'``'''':::::'''`
+                ;%|!;;::;;;::;;;!!|%%%&%'.''````''`...`'''''``....``.
+               .:!::;;;!%$|:''';%$||%$$|'`':;'`:|!!'  .  ..```.`:;:.
+                `:;;;!!!;::|$$%||$$%%$$;`'::''''``'::'`:!||:``';:'.
+                .:;;!||!:;!|||!!;!||%$%:`::':'`.....':''``:'```:'.
+                .:;!!||!!||;:;|!!|%$$&; `:;:`.. .`':;:...`:::;;`
+                .':;;;;;!!!;;;!%%%$$&%` .''''`. .....``. .```::`
+                 ':::;;!!!!;:;|%%$$$%'  .'`````.        ..';;:'
+                ';!|||||%%$$$%%%%$$&%'  ':;::'`.... ...``''''`
+               .:;;;;;;!;!!|%%$$$$$&&! .':''``.....`````.``'''.
+               `:::'::::'';!!!|!!!|$&$;:'```'`..  .`'::;!!!;;:.
+               `'':::::::::::;;;;;!|%%;'''``......  ...``':;;;'
+              .':::;;;;:::'`';!!;;;|%%;```'''`...`'':::''```'::'.
+              `'':::''''``````':;!|%$$|'``..  ..    ......``''::'.
+             .'':::::::::;::::'':!|%$&%;``......     ....````''::'
+            .':::;;!|||||;:;!||!!!|$$&$;''````.......````'''''''''.
+           `''':;;;|%$%!;:;;!!!|!!|%$&%;''````.....``......``'''''`.
+          `:::::;::;|%%|;::::;|%|;!|$$%;''';:`...    ..':'':::'''''`
+         .::;:::;;;;;!|;```':;!||;;|$$$|;'''':'..    .`'`..```````''`
+         `:;;!;;;;;:;!|!'``:;!%$%|!|%&$|:'`':!;'`....`::'``''''```'''`
+         .:!!!|;;;::::!|;'::!|%$%!;!|$&!`'::'`';:`.`';;::'`'::'```'''`.
+        .';!||%%!;:::;;||!||%%$&%!;;|$|`  `````'!|;:!!:`.``''`````'''''::''`.
+     .;|%%%||%&&%!;!!!!|%$%$$$&$|!|%%%!.  .'''``'|%%|;```'''````'':::::;||||%%||!!;'`.
+    '%$$$$$%!:!%%!;!|||!%$&&&&&$|||||||'   ````'';%%|:````...`':;;;:'``''''':::::::''`.
+     '%&&$$%%%%%|!||||%||&###@@$|%%%|!!!!:````''':!%;`'''``.`;|%%%|:`````.
+         .`:;:`.';!||!!!!:......`:;!|!;||:....`'`':'``.``.`.`''``.....
+     -->
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <title>Metro Ezine</title>
-    <meta name="keywords" content="SJ Metro Ezine">
-    <meta name="description" content="SJ Metro Ezine v0.0.1">
+    <meta name="keywords" content="Metro Ezine">
+    <meta name="description" content="Metro Ezine v0.0.1">
     <meta name="author" content="J.Soon">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -12,14 +43,11 @@
     @Styles.Render("~/lib/metro-ui/2.0.31/css/iconFont.css")
     @Styles.Render("~/lib/animate/animate.css")
     @Styles.Render("~/Content/style.css")
-
     @Scripts.Render("~/lib/jquery/2.1.1/jquery-2.1.1.js")
     @Scripts.Render("~/lib/jquery-ui/1.11.0/jquery-ui.js")
     @Scripts.Render("~/lib/jquery-mousewheel/3.1.12/jquery.mousewheel.js")
-
 </head>
 <body class="metro">
-
     <div id="sjTileArea" class="tile-area tile-area-dark clearfix">
         <!--[if lt IE 9]>
         <h1 style="color: #fff !important;">Ouch ! Browser support :</h1>
@@ -30,9 +58,7 @@
     <footer id="sjCopyright">
         Copyright &copy; 2014 Chengdu Remine Medical Infomation Technology Co., Ltd. All Rights Reserved.
     </footer>
-    @Scripts.Render("~/Scripts/sj.ajax.js")
     @Scripts.Render("~/Scripts/sj.ezine.js")
     @RenderSection("scripts", required: false)
-
 </body>
 </html>

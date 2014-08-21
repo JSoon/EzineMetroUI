@@ -114,7 +114,7 @@ SJ.ezine.init();
 // ajax loading animation
 //
 $( document ).ajaxStart( function() { // Triggered only once
-    var src = '../img/loading.gif?' + SJ.ezine.randomNum();
+    var src = '../Image/loading.gif?' + SJ.ezine.randomNum();
     // add loading mask
     var $sjLoading = $( '<div id="sjLoading"><img src="' + src + '" alt="loading..." /></div>' );
     $( 'body' ).append( $sjLoading );

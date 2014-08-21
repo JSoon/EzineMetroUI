@@ -17,9 +17,9 @@ namespace Ezine.Controllers
         }
 
         // GET: Section
-        public ActionResult Index(int ezineId)
+        public ActionResult Index(int Id)
         {
-            var sections = repository.GetAlListByEzineId(ezineId);
+            var sections = repository.GetAlListByEzineId(Id);
 
             return View(sections);
         }

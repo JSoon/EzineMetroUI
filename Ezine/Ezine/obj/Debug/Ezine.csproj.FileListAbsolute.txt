@@ -35,7 +35,6 @@ G:\git\EzineMetroUI\Ezine\Ezine\bin\zh-Hans\EntityFramework.resources.dll
 G:\git\EzineMetroUI\Ezine\Ezine\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
 G:\git\EzineMetroUI\Ezine\Ezine\obj\Debug\Ezine.dll
 G:\git\EzineMetroUI\Ezine\Ezine\obj\Debug\Ezine.pdb
-G:\git\EzineMetroUI\Ezine\Ezine\obj\Debug\Ezine.csprojResolveAssemblyReference.cache
 G:\git\EzineMetroUI\Ezine\Ezine\bin\Antlr3.Runtime.dll
 G:\git\EzineMetroUI\Ezine\Ezine\bin\WebGrease.dll
 G:\git\EzineMetroUI\Ezine\Ezine\bin\Antlr3.Runtime.pdb

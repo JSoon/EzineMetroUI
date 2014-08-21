@@ -9,29 +9,18 @@
         DaoSheng
     </a>
 </h1>
-<!-- .tile-group -->
 <div class="tile-group">
     @foreach (var item in Model)
     {
-        <a class="tile double double-vertical" data-url="contents.html" data-rel="@item.EzineId">
+        <a class="tile double double-vertical" data-url="contents.html" href="/Section/Index/@item.EzineId">
             <div class="tile-content"><img src="@item.FilePath@item.OldFileName" alt=""></div>
             <div class="tile-status bg-dark opacity">
                 <span class="label">@item.Name  @@ @item.PublishDate.ToString("yyyy-MM");</span>
             </div>
         </a>
     }
-
-
-</div><!-- /.tile-group -->
-
+</div>
 <script src="../lib/metro-ui/2.0.31/min/metro.min.js"></script>
 <script>
-
-    $('div a').on('click', function (e) {
-        var id = $(this).attr('data-rel');
-        window.location.href = 'Section/Index/' + id;
-    });
-
-
     $('#sjTileArea').addClass('animated bounceInRight');
 </script>
