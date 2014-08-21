@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IAccount.cs" />
+    <Compile Include="Abstract\IArticle.cs" />
     <Compile Include="Abstract\IAttachment.cs" />
     <Compile Include="Abstract\IEzine.cs" />
     <Compile Include="Abstract\ISection.cs" />
@@ -146,6 +147,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
