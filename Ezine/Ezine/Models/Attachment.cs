@@ -12,7 +12,7 @@ namespace Ezine.Models
     {
         public int Id { get; set; }
         public string FileType { get; set; }
-        public string FileSzie { get; set; }
+        public int FileSzie { get; set; }
         public string FilePath { get; set; }
         public string NewFileName { get; set; }
         public string OldFileName { get; set; }

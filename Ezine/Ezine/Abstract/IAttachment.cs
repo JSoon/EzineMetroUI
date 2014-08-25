@@ -13,5 +13,7 @@ namespace Ezine.Abstract
     public interface IAttachment
     {
         Attachment AttachmentById(int Id);
+
+        int AddFile(Attachment model);
     }
 }

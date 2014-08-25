@@ -30,5 +30,13 @@ namespace Ezine.Repository
                          };
             return ezines;
         }
+
+
+        public int Add(EzineInfo model)
+        {
+            var ezine = db.EzineInfos.Add(model);
+            int row = db.SaveChanges();
+            return row;
+        }
     }
 }

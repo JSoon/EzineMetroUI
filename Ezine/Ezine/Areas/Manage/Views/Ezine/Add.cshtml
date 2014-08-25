@@ -1,0 +1,152 @@
+﻿@model Ezine.Models.EzineInfo
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render("~/Lib/webuploader/0.1.4/css/webuploader.css")
+@Styles.Render("~/Lib/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css")
+<h3>新增期刊封面</h3>
+
+<form role="form" method="post" action="">
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            <label for="name" class="control-label col-md-2">期刊名称</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="name" name="name" placeholder="期刊名称">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="control-label col-md-2">时间</label>
+            <div class="col-md-10">
+                <input size="16" type="text" value="" readonly class="form-control" id="publishDate" name="publishDate">
+                <span class="add-on"><i class="icon-th"></i></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="control-label col-md-2">封面图片</label>
+            <div class="col-md-10">
+                <div class="panel-body">
+                    <div id="uploader" class="wu-example">
+                        <!--用来存放文件信息-->
+                        <div id="thelist" class="uploader-list"></div>
+                        <div class="btns">
+                            <div id="picker">选择文件</div>
+                            <button id="ctlBtn" class="btn btn-default">开始上传</button>
+                            <input type="hidden" id="attachmentId" name="attachmentId">
+                        </div>
+                    </div>
+                </div><!-- /.panel-body -->
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="保存" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+<div>
+    @Html.ActionLink("返回列表", "Index")
+</div>
+@Scripts.Render("~/Lib/webuploader/0.1.4/dist/webuploader.min.js")
+@Scripts.Render("~/Lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js")
+@Scripts.Render("~/Lib/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js")
+<script type="text/javascript">
+    $("#publishDate").datetimepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        todayBtn: true,
+        minView: 2
+    });
+
+    $.extend(WebUploader.Uploader.options, {
+        auto: false, // 是否自动开始上传
+        swf: 'http://cdn.staticfile.org/webuploader/0.1.0/Uploader.swf', // swf 文件路径
+    });
+
+    // 文件上传
+    var $list = $('#thelist'),
+        $btn = $('#ctlBtn'),
+        state = 'pending';
+
+    var uploader = WebUploader.create({
+        // 不压缩image
+        resize: false,
+        // 文件接收服务端。
+        server: '/Manage/Upload/UploadFile',
+        // 选择文件的按钮。可选。
+        // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+        pick: '#picker'
+    });
+
+    // 当有文件添加进来的时候
+    uploader.on('fileQueued', function (file) {
+        $list.append('<div id="' + file.id + '" class="item">' +
+            '<h4 class="info">' + file.name + '</h4>' +
+            '<p class="state">等待上传...</p>' +
+        '</div>');
+    });
+
+    // 文件上传过程中创建进度条实时显示。
+    uploader.on('uploadProgress', function (file, percentage) {
+        var $li = $('#' + file.id),
+            $percent = $li.find('.progress .progress-bar');
+
+        // 避免重复创建
+        if (!$percent.length) {
+            $percent = $('<div class="progress progress-striped active">' +
+              '<div class="progress-bar" role="progressbar" style="width: 0%">' +
+              '</div>' +
+            '</div>').appendTo($li).find('.progress-bar');
+        }
+
+        $li.find('p.state').text('上传中');
+
+        $percent.css('width', percentage * 100 + '%');
+    });
+
+    uploader.on('uploadSuccess', function (file, response) {
+        if (response === 0) {
+            $('#' + file.id).find('p.state').text('上传失败');
+        } else {
+            $('#attachmentId').val(response);
+            $('#' + file.id).find('p.state').text('上传成功');
+        }
+
+    });
+
+    uploader.on('uploadError', function (file, reason) {
+        $('#' + file.id).find('p.state').text('上传出错');
+    });
+
+    uploader.on('uploadComplete', function (file) {
+        $('#' + file.id).find('.progress').fadeOut();
+    });
+
+    uploader.on('all', function (type) {
+        if (type === 'startUpload') {
+            state = 'uploading';
+        } else if (type === 'stopUpload') {
+            state = 'paused';
+        } else if (type === 'uploadFinished') {
+            state = 'done';
+        }
+
+        if (state === 'uploading') {
+            $btn.text('暂停上传');
+        } else {
+            $btn.text('开始上传');
+        }
+    });
+
+    $btn.on('click', function () {
+        if (state === 'uploading') {
+            uploader.stop();
+        } else {
+            uploader.upload();
+        }
+    });
+</script>

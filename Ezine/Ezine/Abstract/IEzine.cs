@@ -16,5 +16,11 @@ namespace Ezine.Abstract
         /// </summary>
         /// <returns></returns>
         IQueryable<EzineViewModel> GetAllList();
+        /// <summary>
+        /// 新增
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        int Add(EzineInfo model);
     }
 }

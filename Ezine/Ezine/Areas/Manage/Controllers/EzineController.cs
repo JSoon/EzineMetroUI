@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Ezine.Abstract;
+using Ezine.Models;
 
 namespace Ezine.Areas.Manage.Controllers
 {
@@ -18,6 +19,28 @@ namespace Ezine.Areas.Manage.Controllers
         {
             return View();
         }
+
+        /// <summary>
+        /// 新增
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public ActionResult Add()
+        {
+            return View();
+        }
+        /// <summary>
+        /// 新增
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Add(EzineInfo model)
+        {
+            int result = repository.Add(model);
+
+            return RedirectToAction("Index");
+        }
         /// <summary>
         /// 所有的杂志信息列表
         /// </summary>
@@ -25,7 +48,7 @@ namespace Ezine.Areas.Manage.Controllers
         public JsonResult EzineList()
         {
             var ezine = repository.GetAllList();
-            return Json(ezine,JsonRequestBehavior.AllowGet);
+            return Json(ezine, JsonRequestBehavior.AllowGet);
         }
     }
 }
