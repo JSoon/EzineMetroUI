@@ -214,7 +214,7 @@ var ezineControllers = angular.module( 'metroEzineControllers', [] );
  */
 ezineControllers.controller( 'indexController', [ '$scope', '$http',
     function( $scope, $http ) {
-        // Add animate to the #sjTileArea after index page loaded
+        // Add animate to the #sjTileArea after page loaded
         angular.element( '#sjTileArea' ).addClass( 'animated bounceInLeft' );
         // Get ezine-list
         $http( {
@@ -234,10 +234,36 @@ ezineControllers.controller( 'indexController', [ '$scope', '$http',
 /**
  * Contents page controller
  */
-ezineControllers.controller( 'contentsController', [ '$scope', '$routeParams',
-    function( $scope, $routeParams ) {
+ezineControllers.controller( 'contentsController', [ '$scope', '$routeParams', '$http',
+    function( $scope, $routeParams, $http ) {
+        // Add animate to the #sjTileArea after page loaded
         angular.element( '#sjTileArea' ).addClass( 'animated bounceInRight' );
         var ezineId = $routeParams.ezineId;
-        
+        // Get ezine-contents
+        $http( {
+            method: 'GET',
+            url: '/js/ezine-contents.json',
+            params: {
+                'id': ezineId,
+                '_': Math.random()
+            }
+        } ).then( function( success ) {
+            $scope.articles = success.data;
+            // Chapter filter
+            var indexedChapters = [];
+            $scope.articlesToFilter = function() {
+                indexedChapters = [];
+                return $scope.articles;
+            }
+            $scope.filterChapters = function( article ) {
+                var chapterIsNew = ( indexedChapters.indexOf( article.chapter ) == -1 );
+                if ( chapterIsNew ) {
+                    indexedChapters.push( article.chapter );
+                }
+                return chapterIsNew;
+            }
+        }, function( fail ) {
+
+        } );
     }
 ] );

@@ -5,8 +5,25 @@
         <small class="subheader">Contents</small>
     </a>
 </h1>
-<div class="tile-group">
-    <div class="tile-group-title"><i class="icon-list smaller on-left-more"></i>Section 1</div>
+<div class="tile-group" ng-repeat="articlePerChapter in articlesToFilter() | filter: filterChapters">
+    <div class="tile-group-title"><i class="icon-list smaller on-left-more"></i>{{articlePerChapter.chapterName}}</div>
+    <div class="listview">
+        <a data-url="tmpl-1.html" class="list" data-hint="思源黑体, 一款好用的开源中文字体" data-hint-position="top" ng-repeat="article in articles | filter: {chapter: articlePerChapter.chapter}">
+            <div class="list-content">
+                <img class="icon" src="http://lorempixel.com/124/125/animals/3" alt="">
+                <div class="data">
+                    <span class="list-title">{{article.articleName}}</span>
+                    <span class="list-remark">{{article.author}}<span class="label label-relay">转</span></span>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+
+<!-- <div class="tile-group">
+    <div class="tile-group-title"><i class="icon-list smaller on-left-more"></i>Chapter 1</div>
     <div class="listview">
         <a data-url="tmpl-1.html" class="list" data-hint="思源黑体, 一款好用的开源中文字体" data-hint-position="top">
             <div class="list-content">
@@ -27,9 +44,9 @@
             </div>
         </a>
     </div>
-</div><!-- /.tile-group -->
-<div class="tile-group">
-    <div class="tile-group-title"><i class="icon-list smaller on-left-more"></i>Section 2</div>
+</div> --><!-- /.tile-group -->
+<!-- <div class="tile-group">
+    <div class="tile-group-title"><i class="icon-list smaller on-left-more"></i>Chapter 2</div>
     <div class="listview">
         <a data-url="tmpl-3.html" class="list" data-hint="世界上存在过哪些奇特的古生物？" data-hint-position="top">
             <div class="list-content">
@@ -59,6 +76,6 @@
             </div>
         </a>
     </div>
-</div><!-- /.tile-group -->
+</div> --><!-- /.tile-group -->
 
 <script src="../lib/metro-ui/2.0.31/min/metro.min.js"></script>
