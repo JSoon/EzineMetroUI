@@ -1,8 +1,8 @@
-//
-//
-// jQuery ajax global settings
-//
-//
+/**
+ *
+ * jQuery ajax global settings
+ *
+ */
 $.ajaxSetup( {
     global: true,
     aysnc: true,

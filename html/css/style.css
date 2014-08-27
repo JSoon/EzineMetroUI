@@ -1,3 +1,14 @@
+/**
+ *导入公共样式
+ */
+/**
+ * 公用样式表
+ */
+/*字体变量*/
+/*颜色变量*/
+/**
+ * 重写 metro-bootstrap.css
+ */
 .metro .tile-area {
   margin-right: -999em;
   float: left;
@@ -54,6 +65,7 @@
   font-size: 12px;
   color: #eee;
 }
+/*滚动条*/
 .metro .scrollbar-v,
 .metro .scrollbar-h {
   background-color: #666;
@@ -76,14 +88,39 @@
 .metro .scrollbar-line-h-btn:hover {
   background-color: #666;
 }
+/*透明类*/
+/*背景透明类*/
+/*自定义鼠标指针*/
 html {
   cursor: url(../img/cursor.png) 0 0, auto;
 }
+/*背景图*/
 body {
   background: url(../img/bg.jpg) center center no-repeat;
   background-color: #1d1d1d;
   background-attachment: fixed;
 }
+/*ajax loading*/
+#sjLoading {
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  display: none;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+#sjLoading span {
+  display: inline-block;
+  padding: 20px 35px;
+  color: #455680;
+  font-family: 'Microsoft YaHei';
+  font-weight: bold;
+  background-color: #fff;
+}
+/*选中文本背景色*/
 ::selection {
   background: #359945;
   color: #fff;
@@ -92,9 +129,11 @@ body {
   background: #359945;
   color: #fff;
 }
+/*链接鼠标样式*/
 a {
   cursor: pointer !important;
 }
+/*原创 or 转载标记*/
 .metro .label {
   padding: 6px;
   margin: 0 5px;
@@ -107,23 +146,7 @@ a {
   color: #fff;
   background-color: #008a00;
 }
-#sjLoading {
-  display: none;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  background-color: #000000;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 9999;
-}
-#sjLoading img {
-  zoom: 1;
-  filter: alpha(opacity=90);
-  opacity: 0.9;
-  border-radius: 10px;
-}
+/*版权信息*/
 #sjCopyright {
   position: fixed;
   left: 0;
