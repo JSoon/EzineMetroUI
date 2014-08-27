@@ -6,6 +6,9 @@ using Ezine.Areas.Manage.Models;
 
 namespace Ezine.Abstract
 {
+    /// <summary>
+    /// 账户信息
+    /// </summary>
     public interface IAccount
     {
         /// <summary>

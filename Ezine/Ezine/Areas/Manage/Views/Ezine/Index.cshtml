@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "封面信息";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+<h3>封面信息</h3>
+
+<button type="button" id="btnAdd" class="btn btn-primary">新增</button>
+
+<div class="table-responsive" ng-controller="ezineList">
+    <table class="table">
+        <thead>
+            <tr>
+                <td>名称</td>
+                <td>日期</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in ezines">
+                <td>{{item.Name}}</td>
+                <td>{{item.PublishDate | date:"yyyy-MM-dd" }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    $('#btnAdd').on('click', function (e) {
+        location.href = '/Manage/Ezine/Add';
+    });
+</script>

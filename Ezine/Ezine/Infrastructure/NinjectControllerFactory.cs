@@ -7,7 +7,7 @@ using Ninject;
 using Ezine.Abstract;
 using Ezine.Repository;
 
-namespace SportsStore.WebUI.Infrastructure
+namespace Ezine.Infrastructure
 {
     public class NinjectControllerFactory : DefaultControllerFactory
     {
@@ -29,6 +29,9 @@ namespace SportsStore.WebUI.Infrastructure
         private void AddBindings()
         {
             ninjectKernel.Bind<IAccount>().To<AccountRepository>();
+            ninjectKernel.Bind<IEzine>().To<EzineRepository>();
+            ninjectKernel.Bind<ISection>().To<SectionRepository>();
+            ninjectKernel.Bind<IAttachment>().To<AttachmentRepository>();
    
         }
     }
