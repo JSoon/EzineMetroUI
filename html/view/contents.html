@@ -5,77 +5,21 @@
         <small class="subheader">Contents</small>
     </a>
 </h1>
-<div class="tile-group" ng-repeat="articlePerChapter in articlesToFilter() | filter: filterChapters">
-    <div class="tile-group-title"><i class="icon-list smaller on-left-more"></i>{{articlePerChapter.chapterName}}</div>
+<div class="tile-group" ng-repeat="chapterGroup in articlesToFilter() | filter: filterChapters">
+    <div class="tile-group-title"><i class="icon-list smaller on-left-more"></i>{{chapterGroup.chapterName}}</div>
     <div class="listview">
-        <a data-url="tmpl-1.html" class="list" data-hint="思源黑体, 一款好用的开源中文字体" data-hint-position="top" ng-repeat="article in articles | filter: {chapter: articlePerChapter.chapter}">
+        <a data-url="tmpl-1.html" class="list" data-hint="思源黑体, 一款好用的开源中文字体" data-hint-position="top" ng-repeat="article in articles | filter: {chapter: chapterGroup.chapter}" tile-area-directive>
             <div class="list-content">
-                <img class="icon" src="http://lorempixel.com/124/125/animals/3" alt="">
+                <img class="icon" ng-src="{{article.authorAvatar}}" alt="{{article.authorAvatar}}">
                 <div class="data">
                     <span class="list-title">{{article.articleName}}</span>
-                    <span class="list-remark">{{article.author}}<span class="label label-relay">转</span></span>
+                    <span class="list-remark">{{article.author}}<span class="label" ng-class="{'label-original': article.original, 'label-relay': !article.original}">{{article.original | articleSrc }}</span></span>
                 </div>
             </div>
         </a>
     </div>
-</div>
+</div><!-- /.tile-group -->
+<!-- <script src="../lib/metro-ui/2.0.31/dist/metro-ui.js"></script> -->
+<!-- <script src="../lib/metro-ui/2.0.31/min/metro.min.js"></script> -->
 
 
-
-<!-- <div class="tile-group">
-    <div class="tile-group-title"><i class="icon-list smaller on-left-more"></i>Chapter 1</div>
-    <div class="listview">
-        <a data-url="tmpl-1.html" class="list" data-hint="思源黑体, 一款好用的开源中文字体" data-hint-position="top">
-            <div class="list-content">
-                <img class="icon" src="http://lorempixel.com/124/125/animals/3" alt="">
-                <div class="data">
-                    <span class="list-title">思源黑体, 一款好用的开源中文字体</span>
-                    <span class="list-remark">NovaDNG<span class="label label-relay">转</span></span>
-                </div>
-            </div>
-        </a>
-        <a data-url="tmpl-2.html" class="list" data-hint="什么是致敬，什么是抄袭？" data-hint-position="top">
-            <div class="list-content">
-                <img class="icon" src="http://lorempixel.com/125/125/animals/6" alt="">
-                <div class="data">
-                    <span class="list-title">什么是致敬，什么是抄袭？</span>
-                    <span class="list-remark">Phoenix小月<span class="label label-original">原</span></span>
-                </div>
-            </div>
-        </a>
-    </div>
-</div> --><!-- /.tile-group -->
-<!-- <div class="tile-group">
-    <div class="tile-group-title"><i class="icon-list smaller on-left-more"></i>Chapter 2</div>
-    <div class="listview">
-        <a data-url="tmpl-3.html" class="list" data-hint="世界上存在过哪些奇特的古生物？" data-hint-position="top">
-            <div class="list-content">
-                <img class="icon" src="http://lorempixel.com/124/125/animals/9" alt="">
-                <div class="data">
-                    <span class="list-title">世界上存在过哪些奇特的古生物？</span>
-                    <span class="list-remark">狡曈<span class="label label-original">原</span></span>
-                </div>
-            </div>
-        </a>
-        <a data-url="tmpl-4.html" class="list" data-hint="为什么周星驰现在没有拍出以前那么经典搞笑的电影？" data-hint-position="top">
-            <div class="list-content">
-                <img class="icon" src="http://lorempixel.com/125/125/animals/7" alt="">
-                <div class="data">
-                    <span class="list-title">为什么周星驰现在没有拍出以前那么经典搞笑的电影？</span>
-                    <span class="list-remark">胡戈<span class="label label-original">原</span></span>
-                </div>
-            </div>
-        </a>
-        <a class="list" data-hint="对罗永浩和他的锤子手机的负面评价主要是出于哪些方面的原因？" data-hint-position="top">
-            <div class="list-content">
-                <img class="icon" src="http://lorempixel.com/124/125/animals/10" alt="">
-                <div class="data">
-                    <span class="list-title">对罗永浩和他的锤子手机的负面评价主要是出于哪些方面的原因？</span>
-                    <span class="list-remark">贺仙<span class="label label-relay">转</span></span>
-                </div>
-            </div>
-        </a>
-    </div>
-</div> --><!-- /.tile-group -->
-
-<script src="../lib/metro-ui/2.0.31/min/metro.min.js"></script>

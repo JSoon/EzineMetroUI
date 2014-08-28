@@ -30,10 +30,11 @@ SJ.ezine = {
      */
     ajaxLoadingTips: function( tSwitch ) {
         if ( tSwitch === 'show' ) {
+            $( '#sjLoading' ).remove(); // Make sure there is no #sjLoading existed in the DOM at the beginning
             var sjLoading = $( '<div id="sjLoading"><span>数据加载中，请稍后 ...</span></div>' );
             $( 'body' ).append( sjLoading );
             var txtHeight = $( '#sjLoading > span' ).outerHeight();
-            var top = $( window ).height() / 2 - txtHeight / 2; // 这里必须事先确定图片高度
+            var top = $( window ).height() / 2 - txtHeight / 2;
             $( '#sjLoading > span' ).css( 'margin-top', top );
             $( '#sjLoading' ).show();
         } else if ( tSwitch === 'hide' ) {
@@ -133,7 +134,8 @@ SJ.ezine.init();
 var ezineApp = angular.module( 'metroEzine', [
     'ngRoute',
     'metroEzineServices',
-    'metroEzineControllers'
+    'metroEzineHomePage',
+    'metroEzineContentsPage'
 ] );
 
 /**
@@ -143,7 +145,7 @@ ezineApp.config( [ '$routeProvider',
     function( $routeProvider ) {
         $routeProvider.when( '/ezines', {
             templateUrl: 'home.html',
-            controller: 'indexController'
+            controller: 'homeController'
         } ).when( '/ezines/:ezineId', {
             templateUrl: 'contents.html',
             controller: 'contentsController'
@@ -156,10 +158,9 @@ ezineApp.config( [ '$routeProvider',
 /**
  * metroEzineServices Module
  *
- * Description
+ * Global services here
  */
 var ezineServices = angular.module( 'metroEzineServices', [] );
-
 ezineServices.config( [ '$httpProvider',
     function( $httpProvider ) {
         // Register the interceptor as a service, intercepts ALL angular ajax http calls
@@ -204,15 +205,15 @@ ezineServices.factory( 'httpInterceptor', [ '$q',
 ] );
 
 /**
- * metroEzineControllers Module
+ * metroEzineHomePage Module
  *
  * Description
  */
-var ezineControllers = angular.module( 'metroEzineControllers', [] );
+var ezineHome = angular.module( 'metroEzineHomePage', [] );
 /**
- * Index page controller
+ * Home page controller
  */
-ezineControllers.controller( 'indexController', [ '$scope', '$http',
+ezineHome.controller( 'homeController', [ '$scope', '$http',
     function( $scope, $http ) {
         // Add animate to the #sjTileArea after page loaded
         angular.element( '#sjTileArea' ).addClass( 'animated bounceInLeft' );
@@ -231,10 +232,17 @@ ezineControllers.controller( 'indexController', [ '$scope', '$http',
         } );
     }
 ] );
+
+/**
+ * metroEzineContentsPage Module
+ *
+ * Description
+ */
+var ezineContents = angular.module( 'metroEzineContentsPage', [] );
 /**
  * Contents page controller
  */
-ezineControllers.controller( 'contentsController', [ '$scope', '$routeParams', '$http',
+ezineContents.controller( 'contentsController', [ '$scope', '$routeParams', '$http',
     function( $scope, $routeParams, $http ) {
         // Add animate to the #sjTileArea after page loaded
         angular.element( '#sjTileArea' ).addClass( 'animated bounceInRight' );
@@ -267,3 +275,46 @@ ezineControllers.controller( 'contentsController', [ '$scope', '$routeParams', '
         } );
     }
 ] );
+/**
+ * Contents page filter
+ */
+ezineContents.filter( 'articleSrc', function() {
+    return function( articleSrc ) {
+        if ( articleSrc === true ) {
+            articleSrc = '原';
+        } else {
+            articleSrc = '转';
+        }
+        return articleSrc;
+    }
+} );
+/**
+ * Contents page directive
+ */
+ezineContents.directive( 'tileAreaDirective',
+    function() {
+        // Runs during compile
+        return {
+            // name: '',
+            // priority: 1,
+            // terminal: true,
+            // scope: {}, // {} = isolate, true = child, false/undefined = no change
+            // controller: function($scope, $element, $attrs, $transclude) {},
+            // require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+            restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+            // template: '',
+            // templateUrl: '',
+            // replace: true,
+            // transclude: true,
+            // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+            link: function( $scope, iElm, iAttrs, controller ) {
+                console.log( $scope );
+                console.log( iAttrs );
+                // if ( $scope.$last ) {
+                //     angular.element( '#sjTileArea' ).after( '<script src="../lib/metro-ui/2.0.31/min/metro.min.js"></script>' );
+                // }
+                // angular.element( iElm ).after( '<script src="../lib/metro-ui/2.0.31/min/metro.min.js"></script>' );
+            }
+        };
+    }
+);
