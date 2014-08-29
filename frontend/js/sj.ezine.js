@@ -4,12 +4,13 @@
  * jQuery UI v 1.11.0
  * jQuery mousewheel v 3.1.12
  * Metro UI v 2.0.31
+ * AngularJS 1.3.0-beta.17
  * Animate.css
  *
  * Copyright 2014 J.Soon Personal
  * Released under the MIT license
  *
- * Date: 2014-07-18 18:03 pm
+ * Update Date: 2014-08-29 17:30 pm
  */
 
 if ( window.SJ === undefined ) {
