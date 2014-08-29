@@ -1,5 +1,5 @@
 <h1 class="tile-area-title">
-    <a ng-href="#/ezines">
+    <a data-direction="ltr" ng-href="#/ezines">
         <i class="icon-arrow-left-3 smaller"></i>
         Season 1
         <small class="subheader">Contents</small>
@@ -8,7 +8,7 @@
 <div class="tile-group" ng-repeat="chapterGroup in articlesToFilter() | filter: filterChapters">
     <div class="tile-group-title"><i class="icon-list smaller on-left-more"></i>{{chapterGroup.chapterName}}</div>
     <div class="listview">
-        <a data-url="tmpl-1.html" class="list" data-hint="思源黑体, 一款好用的开源中文字体" data-hint-position="top" ng-repeat="article in articles | filter: {chapter: chapterGroup.chapter}" tile-area-directive>
+        <a class="list" data-direction="rtl" data-hint="{{article.articleName}}" data-hint-position="top" ng-href="#/ezines/{{ezineId}}/{{article.id}}" ng-repeat="article in articles | filter: {chapter: chapterGroup.chapter}" tile-area-directive>
             <div class="list-content">
                 <img class="icon" ng-src="{{article.authorAvatar}}" alt="{{article.authorAvatar}}">
                 <div class="data">
@@ -19,7 +19,5 @@
         </a>
     </div>
 </div><!-- /.tile-group -->
-<!-- <script src="../lib/metro-ui/2.0.31/dist/metro-ui.js"></script> -->
-<!-- <script src="../lib/metro-ui/2.0.31/min/metro.min.js"></script> -->
 
 

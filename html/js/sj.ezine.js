@@ -13,7 +13,7 @@
  */
 
 if ( window.SJ === undefined ) {
-    window.SJ = {};
+    window.SJ = {}
 }
 
 SJ.ezine = {
@@ -23,7 +23,7 @@ SJ.ezine = {
     init: function() {
         // this.freshDisabled();
         this.scrollHoriz();
-        this.ajaxLoad( '#sjTileArea' );
+        // this.ajaxLoad( '#sjTileArea' );
     },
     /**
      * ajax loading tips
@@ -37,6 +37,7 @@ SJ.ezine = {
             var top = $( window ).height() / 2 - txtHeight / 2;
             $( '#sjLoading > span' ).css( 'margin-top', top );
             $( '#sjLoading' ).show();
+            $( '.hint' ).remove(); // 修复页面切换时 .hint 的不消失 bug
         } else if ( tSwitch === 'hide' ) {
             $( '#sjLoading' ).delay( 500 ).fadeOut( function() {
                 $( this ).remove();
@@ -127,19 +128,19 @@ SJ.ezine = {
 SJ.ezine.init();
 
 /**
- * metroEzine Module
+ * metroEzine module
  *
- * Description
+ * description
  */
 var ezineApp = angular.module( 'metroEzine', [
     'ngRoute',
     'metroEzineServices',
     'metroEzineHomePage',
-    'metroEzineContentsPage'
+    'metroEzineContentsPage',
+    'metroEzineArticlePage'
 ] );
-
 /**
- * metroEzine Routes
+ * ezineApp routes
  */
 ezineApp.config( [ '$routeProvider',
     function( $routeProvider ) {
@@ -149,35 +150,58 @@ ezineApp.config( [ '$routeProvider',
         } ).when( '/ezines/:ezineId', {
             templateUrl: 'contents.html',
             controller: 'contentsController'
+        } ).when( '/ezines/:ezineId/:articleId', {
+            templateUrl: 'tmpl-1.html',
+            controller: 'articleController'
         } ).otherwise( {
             redirectTo: '/ezines'
         } );
     }
 ] );
+/**
+ * ezineApp directive
+ * set the page animate direction
+ */
+ezineApp.directive( 'a', [ 'pageDirection',
+    function( pageDirection ) {
+        return {
+            restrict: 'E',
+            link: function( $scope, iElm, iAttrs, controller ) {
+                if ( iAttrs.direction ) {
+                    iElm.on( 'click', function( e ) {
+                        // e.preventDefault();
+                        pageDirection.set( iAttrs.direction );
+                    } );
+                }
+            }
+        };
+    }
+] );
 
 /**
- * metroEzineServices Module
+ * metroEzineServices module
  *
- * Global services here
+ * shared services here
  */
 var ezineServices = angular.module( 'metroEzineServices', [] );
 ezineServices.config( [ '$httpProvider',
     function( $httpProvider ) {
-        // Register the interceptor as a service, intercepts ALL angular ajax http calls
+        // register the interceptor as a service, intercepts ALL angular ajax http calls
         $httpProvider.interceptors.push( 'httpInterceptor' );
     }
 ] );
 ezineServices.run( [ '$http',
     function( $http ) {
-        // Set ajax http cache to false globally
+        // set ajax http cache to false globally
         $http.defaults.cache = false;
     }
 ] );
-ezineServices.factory( 'httpInterceptor', [ '$q',
-    function( $q ) {
+ezineServices.factory( 'httpInterceptor', [ '$q', '$document',
+    function( $q, $document ) {
+        var dir = '';
         return {
             'request': function( config ) {
-                // do something on success
+                // show the loading layer
                 SJ.ezine.ajaxLoadingTips( 'show' );
                 return config;
             },
@@ -189,7 +213,7 @@ ezineServices.factory( 'httpInterceptor', [ '$q',
                 return $q.reject( rejection );
             },
             'response': function( response ) {
-                // do something on success
+                // hide the loading layer
                 SJ.ezine.ajaxLoadingTips( 'hide' );
                 return response;
             },
@@ -200,24 +224,43 @@ ezineServices.factory( 'httpInterceptor', [ '$q',
                 }
                 return $q.reject( rejection );
             }
-        }
+        };
     }
 ] );
+/**
+ * page load direction animation
+ */
+ezineServices.factory( 'pageDirection', function() {
+    var dir = 'rtl';
+    return {
+        set: function( direction ) {
+            dir = direction;
+        },
+        get: function() {
+            return dir;
+        }
+    };
+} );
 
 /**
- * metroEzineHomePage Module
+ * metroEzineHomePage module
  *
- * Description
+ * description
  */
 var ezineHome = angular.module( 'metroEzineHomePage', [] );
 /**
- * Home page controller
+ * home page controller
  */
-ezineHome.controller( 'homeController', [ '$scope', '$http',
-    function( $scope, $http ) {
-        // Add animate to the #sjTileArea after page loaded
-        angular.element( '#sjTileArea' ).addClass( 'animated bounceInLeft' );
-        // Get ezine-list
+ezineHome.controller( 'homeController', [ '$scope', '$http', 'pageDirection',
+    function( $scope, $http, pageDirection ) {
+        // add animate to the #sjTileArea after page loaded
+        var direction = pageDirection.get();
+        if ( direction === 'ltr' ) {
+            angular.element( '#sjTileArea' ).addClass( 'animated bounceInLeft' );
+        } else if ( direction === 'rtl' ) {
+            angular.element( '#sjTileArea' ).addClass( 'animated bounceInRight' );
+        }
+        // get ezine-list
         $http( {
             method: 'GET',
             url: '/js/ezine-list.json',
@@ -234,30 +277,35 @@ ezineHome.controller( 'homeController', [ '$scope', '$http',
 ] );
 
 /**
- * metroEzineContentsPage Module
+ * metroEzineContentsPage module
  *
- * Description
+ * description
  */
 var ezineContents = angular.module( 'metroEzineContentsPage', [] );
 /**
- * Contents page controller
+ * contents page controller
  */
-ezineContents.controller( 'contentsController', [ '$scope', '$routeParams', '$http',
-    function( $scope, $routeParams, $http ) {
-        // Add animate to the #sjTileArea after page loaded
-        angular.element( '#sjTileArea' ).addClass( 'animated bounceInRight' );
-        var ezineId = $routeParams.ezineId;
-        // Get ezine-contents
+ezineContents.controller( 'contentsController', [ '$scope', '$routeParams', '$http', 'pageDirection',
+    function( $scope, $routeParams, $http, pageDirection ) {
+        // add animate to the #sjTileArea after page loaded
+        var direction = pageDirection.get();
+        if ( direction === 'ltr' ) {
+            angular.element( '#sjTileArea' ).addClass( 'animated bounceInLeft' );
+        } else if ( direction === 'rtl' ) {
+            angular.element( '#sjTileArea' ).addClass( 'animated bounceInRight' );
+        }
+        $scope.ezineId = $routeParams.ezineId;
+        // get ezine-contents
         $http( {
             method: 'GET',
             url: '/js/ezine-contents.json',
             params: {
-                'id': ezineId,
+                'id': $scope.ezineId,
                 '_': Math.random()
             }
         } ).then( function( success ) {
             $scope.articles = success.data;
-            // Chapter filter
+            // chapter filter
             var indexedChapters = [];
             $scope.articlesToFilter = function() {
                 indexedChapters = [];
@@ -276,7 +324,7 @@ ezineContents.controller( 'contentsController', [ '$scope', '$routeParams', '$ht
     }
 ] );
 /**
- * Contents page filter
+ * contents page filter
  */
 ezineContents.filter( 'articleSrc', function() {
     return function( articleSrc ) {
@@ -286,10 +334,10 @@ ezineContents.filter( 'articleSrc', function() {
             articleSrc = '转';
         }
         return articleSrc;
-    }
+    };
 } );
 /**
- * Contents page directive
+ * contents page directive
  */
 ezineContents.directive( 'tileAreaDirective',
     function() {
@@ -308,13 +356,33 @@ ezineContents.directive( 'tileAreaDirective',
             // transclude: true,
             // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
             link: function( $scope, iElm, iAttrs, controller ) {
-                console.log( $scope );
-                console.log( iAttrs );
-                // if ( $scope.$last ) {
-                //     angular.element( '#sjTileArea' ).after( '<script src="../lib/metro-ui/2.0.31/min/metro.min.js"></script>' );
-                // }
-                // angular.element( iElm ).after( '<script src="../lib/metro-ui/2.0.31/min/metro.min.js"></script>' );
+                // if the outer loop is the last loop AND the inner loop is ended, then import metro.min.js to make metro hint works for sure
+                if ( !$scope.$parent.$$nextSibling && $scope.$last ) {
+                    angular.element( '#sjTileArea' ).after( '<script src="../lib/metro-ui/2.0.31/min/metro.min.js"></script>' );
+                }
             }
         };
     }
 );
+
+/**
+ * metroEzineArticlePage module
+ *
+ * description
+ */
+var ezineArticle = angular.module( 'metroEzineArticlePage', [] );
+/**
+ * article page controller
+ */
+ezineArticle.controller( 'articleController', [ '$scope', '$routeParams', 'pageDirection',
+    function( $scope, $routeParams, pageDirection ) {
+        // add animate to the #sjTileArea after page loaded
+        var direction = pageDirection.get();
+        if ( direction === 'ltr' ) {
+            angular.element( '#sjTileArea' ).addClass( 'animated bounceInLeft' );
+        } else if ( direction === 'rtl' ) {
+            angular.element( '#sjTileArea' ).addClass( 'animated bounceInRight' );
+        }
+        $scope.ezineId = $routeParams.ezineId; // get ezine id in the route
+    }
+] );

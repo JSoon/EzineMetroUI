@@ -6,7 +6,7 @@
 </h1>
 <!-- .tile-group -->
 <div class="tile-group">
-    <a class="tile double double-vertical" ng-href="#/ezines/{{ezine.id}}" ng-repeat="ezine in ezines">
+    <a class="tile double double-vertical" data-direction="rtl" ng-href="#/ezines/{{ezine.id}}" ng-repeat="ezine in ezines">
         <div class="tile-content"><img ng-src="{{ezine.img}}" alt="{{ezine.img}}"></div>
         <div class="tile-status bg-dark opacity">
             <span class="label">{{ezine.season}} @ {{ezine.date}}</span>
