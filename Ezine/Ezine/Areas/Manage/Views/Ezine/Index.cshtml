@@ -17,7 +17,8 @@
         <tbody>
             <tr ng-repeat="item in ezines">
                 <td>{{item.Name}}</td>
-                <td>{{item.PublishDate | date:"yyyy-MM-dd" }}</td>
+                <td>{{item.PublishDate | formatterDate }}</td>
+                <td><a href="/Manage/Ezine/Edit/{{item.EzineId}}">编辑</a>&nbsp;<a href="#" ng-click="delEzine(item)">删除</a></td>
             </tr>
         </tbody>
     </table>

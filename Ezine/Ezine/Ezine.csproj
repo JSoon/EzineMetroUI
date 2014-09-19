@@ -232,6 +232,7 @@
     <Content Include="Lib\webuploader\0.1.4\dist\webuploader.withoutimage.min.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\controllers.js" />
+    <Content Include="Scripts\filters.js" />
     <Content Include="Scripts\jquery-validate.bootstrap-tooltip.min.js" />
     <Content Include="Scripts\sj.ajax.js" />
     <Content Include="Scripts\sj.ezine.js" />
@@ -438,6 +439,9 @@
     <Content Include="Lib\webuploader\0.1.4\flash\src\com\XMLHttpRequest.as" />
     <Content Include="Lib\webuploader\0.1.4\flash\src\Uploader.as" />
     <Content Include="Lib\webuploader\0.1.4\flash\Uploader.iml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Manage\Views\Ezine\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

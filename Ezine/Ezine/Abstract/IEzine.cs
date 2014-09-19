@@ -22,5 +22,26 @@ namespace Ezine.Abstract
         /// <param name="model"></param>
         /// <returns></returns>
         int Add(EzineInfo model);
+
+        /// <summary>
+        /// 编辑
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        bool Edit(EzineInfo model);
+
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        EzineInfo GetEzine(int id);
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        bool Delete(int id);
     }
 }
