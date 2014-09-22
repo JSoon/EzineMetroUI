@@ -6,27 +6,27 @@
 
 <h2>【@Model.Name】 添加目录章节</h2>
 
-<form ng-controller="SectionCtrl" ng-submit="saveSections()" role="form" novalidate>
+<form ng-controller="SectionCtrl" ng-submit="saveSections(formData)" role="form" novalidate>
     <div class="form-horizontal">
         <hr />
         <div class="form-group">
             <label for="name" class="control-label col-md-2">期刊名称</label>
             <div class="col-md-10">
                 <input type="text" class="form-control" id="chapter.belong" name="ezine.name" value="@Model.Name" readonly>
-                <input type="hidden" name="hdEzineId" id="hdEzineId" value="@Model.Id" />
+                <input type="hidden"  name="hdEzineId" id="hdEzineId" value="@Model.Id" />
             </div>
         </div>
         <div class="form-group">
             <label for="name" class="control-label col-md-2">时间</label>
             <div class="col-md-10">
-                <input size="16" type="text" value="@Model.PublishDate" readonly class="form-control" id="publishDate" name="publishDate">
+                <input size="16" type="text" value="@Model.PublishDate.ToString("yyyy-MM-dd")" readonly class="form-control" id="publishDate" name="publishDate">
             </div>
         </div>
         <div class="form-group">
             <label for="name" class="control-label col-md-2">章节名称</label>
             <div class="col-md-10">
                 <div ng-repeat="section in sections" style="margin-bottom: 10px;">
-                    <input type="text" class="form-control" id="{{ 's' + section.id }}" name="name" value="" placeholder="{{ section.placeholder }}">
+                    <input type="text" class="form-control" id="{{ 's' + section.id }}" ng-model="formData[section.id]" name="name" value="" placeholder="{{ section.placeholder }}">
                 </div>
             </div>
         </div>
@@ -35,7 +35,6 @@
             <div class="col-md-10">
                 <button type="button" ng-click="addChapter()" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-plus"></span></button>
             </div>
-
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

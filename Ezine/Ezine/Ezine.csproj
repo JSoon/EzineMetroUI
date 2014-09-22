@@ -136,6 +136,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\EzineViewModel.cs" />
+    <Compile Include="Models\SectionViewModel.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
     <Compile Include="Infrastructure\EFDbContext.cs" />
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
@@ -233,7 +234,7 @@
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\controllers.js" />
     <Content Include="Scripts\filters.js" />
-    <Content Include="Scripts\jquery-validate.bootstrap-tooltip.min.js" />
+    <Content Include="Lib\jquery\jquery-validate.bootstrap-tooltip.min.js" />
     <Content Include="Scripts\sj.ajax.js" />
     <Content Include="Scripts\sj.ezine.js" />
     <Content Include="Lib\animate\animate.css" />
@@ -337,7 +338,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Manage\Views\Article\" />
-    <Folder Include="Areas\Manage\Views\Upload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -447,6 +447,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Manage\Views\Section\AddSections.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Manage\Views\Section\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

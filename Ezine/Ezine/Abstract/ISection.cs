@@ -13,5 +13,16 @@ namespace Ezine.Abstract
     public interface ISection
     {
         IList<Section> GetAlListByEzineId(int ezineId);
+
+        /// <summary>
+        /// 保存每个杂志的多个章节
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        bool Save(Section model);
+
+        IList<SectionViewModel> GetList(int id);
+
+        bool EditSection(IList<Section> models);
     }
 }

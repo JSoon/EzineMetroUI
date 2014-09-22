@@ -45,6 +45,9 @@
             }
         ];
 
+        // 动态生成章节名称 model
+        $scope.formData = {};
+
         // 添加章节
         $scope.addChapter = function () {
             var sectionsNum = $scope.sections.length;
@@ -55,17 +58,27 @@
             $scope.sections.push(newSection);
         }
 
+        $scope.sectionModel = {};
+
         //$scope.$watch('');
 
         //保存章节
         $scope.saveSections = function () {
+            var hdEzine = angular.element('#hdEzineId').val();
+            var temp = '';
+            for (key in $scope.formData) {
+                temp += $scope.formData[key] + ',';
+            }
+            var postData = { 'EzineId': hdEzine, 'Name': temp };
             var save = $http({
                 method: 'POST',
+                data: postData,
                 url: '/Manage/Section/Save'
             }).success(function (response, status, headers, config) {
                 console.info(response);
             });
         }
     }
+
 
 })();

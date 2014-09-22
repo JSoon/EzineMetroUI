@@ -5,21 +5,22 @@
 <h3>封面信息</h3>
 
 <button type="button" id="btnAdd" class="btn btn-primary">新增</button>
-
 <div class="table-responsive" ng-controller="ezineList">
     <table class="table">
         <thead>
             <tr>
                 <td>名称</td>
                 <td>日期</td>
+                <td>章节管理</td>
+                <td>管理</td>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="item in ezines">
                 <td>{{item.Name}}</td>
                 <td>{{item.PublishDate | formatterDate }}</td>
-                <td><a href="/Manage/Section/AddSections/{{item.EzineId}}">添加目录</a></td>
-                <td><a href="/Manage/Ezine/Edit/{{item.EzineId}}">编辑</a>&nbsp;<a href="#" ng-click="delEzine(item)">删除</a></td>
+                <td><a href="/Manage/Section/AddSections/{{item.EzineId}}">添加添加</a>&nbsp;&nbsp;<a href="/Manage/Section/Edit/{{item.EzineId}}">编辑章节</a></td>
+                <td><a href="/Manage/Ezine/Edit/{{item.EzineId}}">编辑</a>&nbsp;&nbsp;<a href="#" ng-click="delEzine(item)">删除</a></td>
             </tr>
         </tbody>
     </table>
