@@ -6,6 +6,7 @@ using System.Web;
 using Ezine.Models;
 using Ezine.Infrastructure;
 using System.Data.Entity;
+using Ezine.ViewModels;
 
 namespace Ezine.Repository
 {

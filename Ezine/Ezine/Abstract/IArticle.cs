@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ezine.Models;
+using Ezine.ViewModels;
 
 namespace Ezine.Abstract
 {
@@ -12,5 +14,18 @@ namespace Ezine.Abstract
     public interface IArticle
     {
 
+        /// <summary>
+        /// 添加新文章
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        bool AddArticle(Article model);
+
+        /// <summary>
+        /// 所在杂志的所有文章列表
+        /// </summary>
+        /// <param name="ezineId">杂志Id</param>
+        /// <returns></returns>
+        IList<ArticleViewModel> ListByEzineId(int ezineId);
     }
 }

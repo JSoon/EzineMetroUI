@@ -11,6 +11,11 @@ namespace Ezine.Models
     public class Article
     {
         public int Id { get; set; }
+
+        /// <summary>
+        /// 章节Id
+        /// </summary>
+        public int EzineId { get; set; }
         
         /// <summary>
         /// 章节Id

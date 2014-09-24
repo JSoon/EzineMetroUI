@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Ezine.Abstract;
 using Ezine.Models;
+using Ezine.ViewModels;
 
 namespace Ezine.Areas.Manage.Controllers
 {
