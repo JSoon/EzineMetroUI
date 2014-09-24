@@ -232,7 +232,7 @@ ezineServices.factory( 'httpInterceptor', [ '$q', '$document',
  * page load direction animation
  */
 ezineServices.factory( 'pageDirection', function() {
-    var dir = 'rtl';
+    var dir = 'rtl'; // init dir
     return {
         set: function( direction ) {
             dir = direction;
@@ -309,6 +309,7 @@ ezineContents.controller( 'contentsController', [ '$scope', '$routeParams', '$ht
             // chapter filter
             var indexedChapters = [];
             $scope.articlesToFilter = function() {
+                // this will reset the list of indexed chapters each time when the list is looped again
                 indexedChapters = [];
                 return $scope.articles;
             }
