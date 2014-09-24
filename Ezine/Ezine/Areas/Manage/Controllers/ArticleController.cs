@@ -26,6 +26,7 @@ namespace Ezine.Areas.Manage.Controllers
             return View();
         }
 
+
         /// <summary>
         /// 添加新文章
         /// </summary>
@@ -43,8 +44,11 @@ namespace Ezine.Areas.Manage.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
+        [ValidateInput(false)]  
         public ActionResult Add(Article endity)
         {
+            endity.AddDate = DateTime.Now;
+
             var ezine = articleRepository.AddArticle(endity);
             if (ezine)
             {
@@ -66,6 +70,17 @@ namespace Ezine.Areas.Manage.Controllers
             var list = articleRepository.ListByEzineId(id);
 
             return View(list);
+        }
+        /// <summary>
+        /// 编辑
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult Edit(int id)
+        {
+            var ezine = articleRepository.GetArticle(id);
+            
+            return View(ezine);
         }
     }
 }

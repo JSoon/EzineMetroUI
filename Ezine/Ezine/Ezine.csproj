@@ -135,6 +135,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Lib\umeditor\1.2.2\net\ImageUpload.ashx.cs">
+      <DependentUpon>ImageUpload.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\umeditor\1.2.2\net\Uploader.cs" />
     <Compile Include="ViewModels\ArticleViewModel.cs" />
     <Compile Include="ViewModels\EzineViewModel.cs" />
     <Compile Include="ViewModels\SectionViewModel.cs" />
@@ -211,6 +215,84 @@
     <Content Include="Lib\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.uk.js" />
     <Content Include="Lib\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.zh-CN.js" />
     <Content Include="Lib\bootstrap-datetimepicker\js\locales\bootstrap-datetimepicker.zh-TW.js" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\emotion\emotion.css" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\emotion\emotion.js" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\emotion\images\0.gif" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\emotion\images\bface.gif" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\emotion\images\cface.gif" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\emotion\images\fface.gif" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\emotion\images\jxface2.gif" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\emotion\images\neweditor-tab-bg.png" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\emotion\images\tface.gif" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\emotion\images\wface.gif" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\emotion\images\yface.gif" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\formula\formula.css" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\formula\formula.html" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\formula\formula.js" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\formula\images\formula.png" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\image\image.css" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\image\image.js" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\image\images\close.png" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\image\images\upload1.png" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\image\images\upload2.png" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\link\link.js" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\map\map.html" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\map\map.js" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\video\images\center_focus.jpg" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\video\images\left_focus.jpg" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\video\images\none_focus.jpg" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\video\images\right_focus.jpg" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\video\video.css" />
+    <Content Include="Lib\umeditor\1.2.2\dialogs\video\video.js" />
+    <Content Include="Lib\umeditor\1.2.2\lang\en\en.js" />
+    <Content Include="Lib\umeditor\1.2.2\lang\en\images\addimage.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\en\images\alldeletebtnhoverskin.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\en\images\alldeletebtnupskin.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\en\images\background.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\en\images\button.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\en\images\copy.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\en\images\deletedisable.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\en\images\deleteenable.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\en\images\imglabel.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\en\images\listbackground.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\en\images\localimage.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\en\images\music.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\en\images\rotateleftdisable.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\en\images\rotateleftenable.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\en\images\rotaterightdisable.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\en\images\rotaterightenable.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\en\images\upload.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\zh-cn\images\copy.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\zh-cn\images\imglabel.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\zh-cn\images\localimage.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\zh-cn\images\music.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\zh-cn\images\upload.png" />
+    <Content Include="Lib\umeditor\1.2.2\lang\zh-cn\zh-cn.js" />
+    <Content Include="Lib\umeditor\1.2.2\net\upload\2014-07-08\1e43aff6-42cd-458c-96e7-b888c43ddbad.gif" />
+    <Content Include="Lib\umeditor\1.2.2\net\upload\2014-07-08\33e6994e-e7d7-4351-9fd2-ccb6c34b8052.gif" />
+    <Content Include="Lib\umeditor\1.2.2\themes\default\css\umeditor.css" />
+    <Content Include="Lib\umeditor\1.2.2\themes\default\css\umeditor.min.css" />
+    <Content Include="Lib\umeditor\1.2.2\themes\default\images\caret.png" />
+    <Content Include="Lib\umeditor\1.2.2\themes\default\images\close.png" />
+    <Content Include="Lib\umeditor\1.2.2\themes\default\images\icons.gif" />
+    <Content Include="Lib\umeditor\1.2.2\themes\default\images\icons.png" />
+    <Content Include="Lib\umeditor\1.2.2\themes\default\images\ok.gif" />
+    <Content Include="Lib\umeditor\1.2.2\themes\default\images\pop-bg.png" />
+    <Content Include="Lib\umeditor\1.2.2\themes\default\images\spacer.gif" />
+    <Content Include="Lib\umeditor\1.2.2\themes\default\images\videologo.gif" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\jquery.min.js" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\stixgeneral-bundle\STIXFontLicense2010.txt" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\stixgeneral-bundle\stixgeneral-webfont.svg" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\stixgeneral-bundle\stixgeneralbol-webfont.svg" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\stixgeneral-bundle\stixgeneralbolita-webfont.svg" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\stixgeneral-bundle\stixgeneralitalic-webfont.svg" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\Symbola.svg" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\mathquill.css" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\mathquill.js" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\mathquill.min.js" />
+    <Content Include="Lib\umeditor\1.2.2\umeditor.config.js" />
+    <Content Include="Lib\umeditor\1.2.2\umeditor.js" />
+    <Content Include="Lib\umeditor\1.2.2\umeditor.min.js" />
     <Content Include="Lib\webuploader\0.1.4\build\docTpl\css\doc.css" />
     <Content Include="Lib\webuploader\0.1.4\build\fis\intro.js" />
     <Content Include="Lib\webuploader\0.1.4\build\fis\outro.js" />
@@ -219,6 +301,7 @@
     <Content Include="Lib\webuploader\0.1.4\build\tasks\build.js" />
     <Content Include="Lib\webuploader\0.1.4\build\tasks\concat.js" />
     <Content Include="Lib\webuploader\0.1.4\build\tasks\doc.js" />
+    <Content Include="Lib\webuploader\0.1.4\css\style.css" />
     <Content Include="Lib\webuploader\0.1.4\css\webuploader.css" />
     <Content Include="Lib\webuploader\0.1.4\dist\Uploader.swf" />
     <Content Include="Lib\webuploader\0.1.4\dist\webuploader.css" />
@@ -233,6 +316,12 @@
     <Content Include="Lib\webuploader\0.1.4\dist\webuploader.min.js" />
     <Content Include="Lib\webuploader\0.1.4\dist\webuploader.withoutimage.js" />
     <Content Include="Lib\webuploader\0.1.4\dist\webuploader.withoutimage.min.js" />
+    <Content Include="Lib\webuploader\0.1.4\img\bg.png" />
+    <Content Include="Lib\webuploader\0.1.4\img\expressInstall.swf" />
+    <Content Include="Lib\webuploader\0.1.4\img\icons.png" />
+    <Content Include="Lib\webuploader\0.1.4\img\image.png" />
+    <Content Include="Lib\webuploader\0.1.4\img\progress.png" />
+    <Content Include="Lib\webuploader\0.1.4\img\success.png" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\controllers.js" />
     <Content Include="Scripts\filters.js" />
@@ -319,6 +408,7 @@
     <Content Include="Lib\metro-ui\2.0.31\min\metro-bootstrap-responsive.min.css" />
     <Content Include="Lib\metro-ui\2.0.31\min\metro-bootstrap.min.css" />
     <Content Include="Lib\metro-ui\2.0.31\min\metro.min.js" />
+    <Content Include="Scripts\upload.js" />
     <Content Include="Upload\111.jpg" />
     <Content Include="Upload\222.jpg" />
     <Content Include="Upload\333.jpg" />
@@ -457,6 +547,35 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Manage\Views\Article\ArticleList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Manage\Views\Article\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Manage\Views\Article\Add.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lib\umeditor\1.2.2\net\config.json" />
+    <Content Include="Lib\umeditor\1.2.2\net\ImageUpload.ashx" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\stixgeneral-bundle\stixgeneral-webfont.eot" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\stixgeneral-bundle\stixgeneral-webfont.ttf" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\stixgeneral-bundle\stixgeneral-webfont.woff" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\stixgeneral-bundle\stixgeneralbol-webfont.eot" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\stixgeneral-bundle\stixgeneralbol-webfont.ttf" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\stixgeneral-bundle\stixgeneralbol-webfont.woff" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\stixgeneral-bundle\stixgeneralbolita-webfont.eot" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\stixgeneral-bundle\stixgeneralbolita-webfont.ttf" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\stixgeneral-bundle\stixgeneralbolita-webfont.woff" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\stixgeneral-bundle\stixgeneralitalic-webfont.eot" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\stixgeneral-bundle\stixgeneralitalic-webfont.ttf" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\stixgeneral-bundle\stixgeneralitalic-webfont.woff" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\Symbola.eot" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\Symbola.otf" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\Symbola.ttf" />
+    <Content Include="Lib\umeditor\1.2.2\third-party\mathquill\font\Symbola.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lib\webuploader\0.1.4\img\progress.psd" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

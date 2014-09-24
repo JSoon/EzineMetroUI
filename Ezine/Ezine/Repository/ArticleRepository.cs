@@ -42,6 +42,8 @@ namespace Ezine.Repository
                         select
                         new ArticleViewModel
                         {
+                            EzineId=a.EzineId,
+                            ArticleId = a.Id,
                             EzineName = e.Name,
                             Title = a.Title,
                             Author = a.Author,
@@ -49,10 +51,21 @@ namespace Ezine.Repository
                             Agrees = a.Agrees
                         };
 
-            var list= query.ToList<ArticleViewModel>()
+            var list = query.ToList<ArticleViewModel>()
                 .Distinct<ArticleViewModel>(new ArticleComparer())
                 .ToList<ArticleViewModel>();
             return list;
+        }
+        /// <summary>
+        /// 查询文章信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Article GetArticle(int id)
+        {
+            var query = db.Articles.Where(a => a.Id == id);
+
+            return query.FirstOrDefault();
         }
     }
 

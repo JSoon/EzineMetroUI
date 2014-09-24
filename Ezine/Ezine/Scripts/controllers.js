@@ -32,11 +32,8 @@
         });
     }
 
-    // 杂志章节
-    sectionController.inject = ['$scope', '$http']; // 依赖注入
-    ezineController.controller('SectionCtrl', sectionController);
-
-    function sectionController($scope, $http) {
+    // 杂志章节控制器
+    ezineController.controller('SectionCtrl', ['$scope', '$http', function ($scope, $http) {
         // 初始化
         $scope.sections = [
             {
@@ -47,7 +44,6 @@
 
         // 动态生成章节名称 model
         $scope.formData = {};
-
         // 添加章节
         $scope.addChapter = function () {
             var sectionsNum = $scope.sections.length;
@@ -59,9 +55,6 @@
         }
 
         $scope.sectionModel = {};
-
-        //$scope.$watch('');
-
         //保存章节
         $scope.saveSections = function () {
             var hdEzine = angular.element('#hdEzineId').val();
@@ -78,7 +71,28 @@
                 console.info(response);
             });
         }
-    }
+    }]);
 
+
+    //新增文章控制器
+    ezineController.controller("articleCtrl", ['$scope', '$http', function ($scope, $http) {
+        var hdEzineId = angular.element('#EzineId').val();
+        //获取所有的章节
+        $http({
+            method: 'GET',
+            params: { 'id': hdEzineId },
+            url: '/Manage/Section/SectionsById'
+        }).success(function (response, status, headers, config) {
+            $scope.sections = response;
+        });
+
+        //设置默认选择名称
+        $scope.sectionName = { id: 0, Name: '请选择章节' };
+        //设置选择框
+        $scope.setSelect = function (section) {
+            $scope.sectionName = section;
+            $scope.SectionId = section.Id;
+        }
+    }]);
 
 })();

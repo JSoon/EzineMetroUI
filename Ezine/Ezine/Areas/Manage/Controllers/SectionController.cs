@@ -46,6 +46,17 @@ namespace Ezine.Areas.Manage.Controllers
         }
 
         /// <summary>
+        /// 查询杂志下属的所有章节信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public JsonResult SectionsById(int id)
+        {
+            var result = sectionRepository.GetAlListByEzineId(id);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
         /// 编辑章节
         /// </summary>
         /// <param name="id"></param>
@@ -92,5 +103,6 @@ namespace Ezine.Areas.Manage.Controllers
                 return View();
             }
         }
+
     }
 }

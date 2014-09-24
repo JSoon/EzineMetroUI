@@ -48,9 +48,9 @@ namespace Ezine.Models
         public int Agrees { get; set; }
 
         /// <summary>
-        /// 图片
+        /// 图片  多张
         /// </summary>
-        public int AttachmentId { get; set; }
+        public string AttachmentId { get; set; }
         
         /// <summary>
         /// 发布日期

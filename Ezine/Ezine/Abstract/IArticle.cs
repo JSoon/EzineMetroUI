@@ -15,6 +15,13 @@ namespace Ezine.Abstract
     {
 
         /// <summary>
+        /// 查询文章
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Article GetArticle(int id);
+
+        /// <summary>
         /// 添加新文章
         /// </summary>
         /// <param name="model"></param>
@@ -27,5 +34,6 @@ namespace Ezine.Abstract
         /// <param name="ezineId">杂志Id</param>
         /// <returns></returns>
         IList<ArticleViewModel> ListByEzineId(int ezineId);
+
     }
 }

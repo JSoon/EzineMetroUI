@@ -8,6 +8,10 @@ namespace Ezine.ViewModels
 {
     public class ArticleViewModel 
     {
+        public int ArticleId { get; set; }
+
+        public int EzineId { get; set; }
+
         public string EzineName { get; set; }
 
         public string Title { get; set; }

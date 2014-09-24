@@ -4,9 +4,10 @@
     ViewBag.Title = "ArticleList";
     Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
 }
+
 <h2>【@Model.FirstOrDefault().EzineName】文章列表</h2>
-<button type="button" id="btnAdd" class="btn btn-primary">新增文章</button>
-<div class="table-responsive" ng-controller="ezineList">
+<button type="button" id="btnAdd" class="btn btn-primary" ng-click="">新增文章</button>
+<div class="table-responsive">
     <table class="table">
         <thead>
             <tr>
@@ -24,9 +25,17 @@
                     <td>@Model[i].Author</td>
                     <td>@Model[i].Agrees</td>
                     <td>@Model[i].AddDate.ToString("yyyy-MM-dd")</td>
-                    <td><a href="#">编辑</a>&nbsp;&nbsp;<a href="#">删除</a></td>
+                    <td>
+                        <a href="/Manage/Article/Edit/@Model[i].ArticleId">编辑</a>&nbsp;&nbsp;
+                        <a href="/Manage/Article/Delete/@Model[i].ArticleId">删除</a>
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
+<script>
+    $('#btnAdd').on('click', function (e) {
+        location.href = '/Manage/Article/Add/@Model.First().EzineId';
+    });
+</script>
