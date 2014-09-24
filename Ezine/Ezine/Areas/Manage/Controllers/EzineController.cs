@@ -50,5 +50,44 @@ namespace Ezine.Areas.Manage.Controllers
             var ezine = repository.GetAllList();
             return Json(ezine, JsonRequestBehavior.AllowGet);
         }
+
+        /// <summary>
+        /// 编辑
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var ezine = repository.GetEzine(id);
+            return View(ezine);
+        }
+        /// <summary>
+        /// 编辑
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Edit(EzineInfo model)
+        {
+            var result = repository.Edit(model);
+            if (result)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
+        }
+        /// <summary>
+        /// 删除杂志封面
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public JsonResult Delete(int id)
+        {
+            return Json(repository.Delete(id), JsonRequestBehavior.AllowGet);
+        }
     }
 }

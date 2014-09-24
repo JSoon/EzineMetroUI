@@ -39,25 +39,27 @@ namespace Ezine.Areas.Manage.Controllers
                 string miniType = Request.Files[upload].ContentType;
                 string fileType = Path.GetExtension(Request.Files[upload].FileName);
                 Stream fileStream = Request.Files[upload].InputStream;
-                string filename = Path.GetFileName(Request.Files[upload].FileName);
-                string path = HttpContext.Server.MapPath("../../UpLoadFile/");
-                int size = Request.Files[upload].ContentLength;
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
-                Request.Files[upload].SaveAs(path + filename);
-
+                string oldFilename = Path.GetFileName(Request.Files[upload].FileName);
                 DateTime nowTime = DateTime.Now;
                 Random rd = new Random();
+                string newFileName = nowTime.Year.ToString() + nowTime.Month.ToString() + nowTime.Day.ToString() + nowTime.Hour.ToString()
+                    + nowTime.Minute.ToString() + nowTime.Second.ToString() + rd.Next(1000, 1000000) + ".jpg";
+                string rootPath = HttpContext.Server.MapPath("../../UpLoadFile/");
+                string temp = @"../../UpLoadFile/";
+                int size = Request.Files[upload].ContentLength;
+                if (!Directory.Exists(rootPath))
+                {
+                    Directory.CreateDirectory(rootPath);
+                }
+                Request.Files[upload].SaveAs(rootPath + newFileName);
+
                 var file = new Attachment()
                 {
                     FileType = fileType,
                     FileSzie = size,
-                    OldFileName = filename,
-                    NewFileName = nowTime.Year.ToString() + nowTime.Month.ToString() + nowTime.Day.ToString() + nowTime.Hour.ToString()
-                    + nowTime.Minute.ToString() + nowTime.Second.ToString() + rd.Next(1000, 1000000),
-                    FilePath = path,
+                    OldFileName = newFileName,
+                    NewFileName = oldFilename,
+                    FilePath = temp,
                     AddTime = nowTime
                 };
 

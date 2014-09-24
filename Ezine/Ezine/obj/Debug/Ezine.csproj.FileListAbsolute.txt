@@ -1,6 +1,7 @@
 G:\git\EzineMetroUI\Ezine\Ezine\bin\Ezine.dll.config
 G:\git\EzineMetroUI\Ezine\Ezine\bin\Ezine.dll
 G:\git\EzineMetroUI\Ezine\Ezine\bin\Ezine.pdb
+G:\git\EzineMetroUI\Ezine\Ezine\bin\Antlr3.Runtime.dll
 G:\git\EzineMetroUI\Ezine\Ezine\bin\EntityFramework.dll
 G:\git\EzineMetroUI\Ezine\Ezine\bin\EntityFramework.SqlServer.dll
 G:\git\EzineMetroUI\Ezine\Ezine\bin\Microsoft.Web.Infrastructure.dll
@@ -13,6 +14,8 @@ G:\git\EzineMetroUI\Ezine\Ezine\bin\System.Web.Razor.dll
 G:\git\EzineMetroUI\Ezine\Ezine\bin\System.Web.WebPages.Deployment.dll
 G:\git\EzineMetroUI\Ezine\Ezine\bin\System.Web.WebPages.dll
 G:\git\EzineMetroUI\Ezine\Ezine\bin\System.Web.WebPages.Razor.dll
+G:\git\EzineMetroUI\Ezine\Ezine\bin\WebGrease.dll
+G:\git\EzineMetroUI\Ezine\Ezine\bin\Antlr3.Runtime.pdb
 G:\git\EzineMetroUI\Ezine\Ezine\bin\Ninject.xml
 G:\git\EzineMetroUI\Ezine\Ezine\bin\System.Web.Helpers.xml
 G:\git\EzineMetroUI\Ezine\Ezine\bin\System.Web.Mvc.xml
@@ -33,8 +36,6 @@ G:\git\EzineMetroUI\Ezine\Ezine\bin\zh-Hans\System.Web.WebPages.Deployment.resou
 G:\git\EzineMetroUI\Ezine\Ezine\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
 G:\git\EzineMetroUI\Ezine\Ezine\bin\zh-Hans\EntityFramework.resources.dll
 G:\git\EzineMetroUI\Ezine\Ezine\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+G:\git\EzineMetroUI\Ezine\Ezine\obj\Debug\Ezine.csprojResolveAssemblyReference.cache
 G:\git\EzineMetroUI\Ezine\Ezine\obj\Debug\Ezine.dll
 G:\git\EzineMetroUI\Ezine\Ezine\obj\Debug\Ezine.pdb
-G:\git\EzineMetroUI\Ezine\Ezine\bin\Antlr3.Runtime.dll
-G:\git\EzineMetroUI\Ezine\Ezine\bin\WebGrease.dll
-G:\git\EzineMetroUI\Ezine\Ezine\bin\Antlr3.Runtime.pdb
