@@ -1,6 +1,5 @@
-﻿@model IQueryable<Ezine.ViewModels.EzineViewModel>
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "道生";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h1 class="tile-area-title">
@@ -9,16 +8,14 @@
         DaoSheng
     </a>
 </h1>
-<div class="tile-group">
-    @foreach (var item in Model)
-    {
-        <a class="tile double double-vertical" data-url="contents.html" href="/Section/Index/@item.EzineId">
-            <div class="tile-content"><img src="@item.FilePath@item.OldFileName" alt=""></div>
-            <div class="tile-status bg-dark opacity">
-                <span class="label">@item.Name  @@ @item.PublishDate.ToString("yyyy-MM");</span>
-            </div>
-        </a>
-    }
+<div class="tile-group" ng-controller="viewEzineCtrl">
+    <a class="tile double double-vertical" ng-repeat="item in ezines" data-url="contents.html" href="/Section/Index/{{item.EzineId}}">
+        <div class="tile-content"><img ng-src="{{item.FilePath+item.OldFileName}}" alt="{{item.Name}}"></div>
+        <div class="tile-status bg-dark opacity">
+            <span class="label">{{item.Name}} @@{{item.PublishDate | formatterDate}}</span>
+        </div>
+    </a>
+
 </div>
 <script src="../lib/metro-ui/2.0.31/min/metro.min.js"></script>
 <script>

@@ -14,6 +14,15 @@ namespace Ezine.Controllers
         {
             repository = ezineRepository;
         }
+        /// <summary>
+        /// 获取所有的期刊
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult EzineList()
+        {
+            var query = repository.GetAllList();
+            return Json(query.ToList());
+        }
 
         public ActionResult Index()
         {

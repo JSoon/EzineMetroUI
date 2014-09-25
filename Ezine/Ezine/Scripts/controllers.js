@@ -95,4 +95,10 @@
         }
     }]);
 
+
+    //前端展示
+    ezineController.controller('viewEzineCtrl', ['$scope', '$http', function ($scope, $http) {
+        GetEzineData($scope, $http);
+    }]);
+
 })();
