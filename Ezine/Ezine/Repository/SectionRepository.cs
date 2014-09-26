@@ -21,7 +21,7 @@ namespace Ezine.Repository
         public IList<Section> GetAlListByEzineId(int ezineId)
         {
             var sections = from s in db.Sections
-                           where s.Id == ezineId
+                           where s.EzineId == ezineId
                            select s;
 
             return sections.ToList<Section>();

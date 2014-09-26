@@ -23,5 +23,6 @@ namespace Ezine.Controllers
 
             return View(sections);
         }
+     
     }
 }

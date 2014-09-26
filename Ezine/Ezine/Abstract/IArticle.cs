@@ -34,6 +34,12 @@ namespace Ezine.Abstract
         /// <param name="ezineId">杂志Id</param>
         /// <returns></returns>
         IList<ArticleViewModel> ListByEzineId(int ezineId);
+        /// <summary>
+        /// 章节所属的文章列表
+        /// </summary>
+        /// <param name="sectionId"></param>
+        /// <returns></returns>
+        IList<ArticleList> ListBySectionId(int sectionId);
 
     }
 }

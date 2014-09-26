@@ -101,4 +101,19 @@
         GetEzineData($scope, $http);
     }]);
 
+    //前端展示
+    ezineController.controller('viewArticleCtrl', ['$scope', '$http', function ($scope, $http) {
+        var sectionId = angular.element('#sectionId').val();
+        //获取所有的章节
+        $http({
+            method: 'GET',
+            params: { 'id': sectionId },
+            url: '/Article/ListArticleBySection'
+        }).success(function (response, status, headers, config) {
+            console.log(response)
+            $scope.articles = response;
+        });
+    }]);
+
+
 })();

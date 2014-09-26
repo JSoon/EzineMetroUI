@@ -130,6 +130,7 @@
     <Compile Include="Areas\Manage\Controllers\UploadController.cs" />
     <Compile Include="Areas\Manage\ManageAreaRegistration.cs" />
     <Compile Include="Areas\Manage\Models\Account.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SectionController.cs" />
     <Compile Include="Global.asax.cs">
@@ -139,6 +140,7 @@
       <DependentUpon>ImageUpload.ashx</DependentUpon>
     </Compile>
     <Compile Include="Lib\umeditor\1.2.2\net\Uploader.cs" />
+    <Compile Include="ViewModels\ArticleList.cs" />
     <Compile Include="ViewModels\ArticleViewModel.cs" />
     <Compile Include="ViewModels\EzineViewModel.cs" />
     <Compile Include="ViewModels\SectionViewModel.cs" />
@@ -429,6 +431,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Article\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

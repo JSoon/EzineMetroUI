@@ -42,7 +42,7 @@ namespace Ezine.Repository
                         select
                         new ArticleViewModel
                         {
-                            EzineId=a.EzineId,
+                            EzineId = a.EzineId,
                             ArticleId = a.Id,
                             EzineName = e.Name,
                             Title = a.Title,
@@ -67,6 +67,29 @@ namespace Ezine.Repository
 
             return query.FirstOrDefault();
         }
+
+        /// <summary>
+        /// 章节所属的文章列表
+        /// </summary>
+        /// <param name="sectionId"></param>
+        /// <returns></returns>
+        public IList<ArticleList> ListBySectionId(int sectionId)
+        {
+
+            var query = from a in db.Articles
+                        join s in db.Sections on a.SectionId equals s.Id
+                        select
+                        new ArticleList
+                        {
+                            SectionId = s.Id,
+                            SectionName = s.Name,
+                            Articels = (db.Articles.Where(t => t.SectionId == s.Id).ToList<Article>())
+                        };
+
+            return query.ToList<ArticleList>()
+                .Distinct<ArticleList>(new ArticleSectionComparer())
+                .ToList<ArticleList>();
+        }
     }
 
     /// <summary>
@@ -81,6 +104,21 @@ namespace Ezine.Repository
         public override int GetHashCode(ArticleViewModel obj)
         {
             return obj.Title.GetHashCode();
+        }
+    }
+
+    /// <summary>
+    /// 去重复
+    /// </summary>
+    class ArticleSectionComparer : EqualityComparer<ArticleList>
+    {
+        public override bool Equals(ArticleList x, ArticleList y)
+        {
+            return x.SectionId == y.SectionId;
+        }
+        public override int GetHashCode(ArticleList obj)
+        {
+            return obj.SectionId.GetHashCode();
         }
     }
 }
