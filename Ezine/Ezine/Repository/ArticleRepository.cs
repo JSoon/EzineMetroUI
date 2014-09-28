@@ -73,14 +73,18 @@ namespace Ezine.Repository
         /// </summary>
         /// <param name="sectionId"></param>
         /// <returns></returns>
-        public IList<ArticleList> ListBySectionId(int sectionId)
+        public IList<ArticleList> ListBySectionId(int ezineId)
         {
 
-            var query = from a in db.Articles
-                        join s in db.Sections on a.SectionId equals s.Id
+            var query = from s in db.Sections
+                        join a in db.Articles on s.Id equals a.SectionId
+                        join e in db.EzineInfos on s.EzineId equals e.Id
+                        where s.EzineId == ezineId
                         select
                         new ArticleList
                         {
+                            EzineName = e.Name,
+                            ArticleId = a.Id,
                             SectionId = s.Id,
                             SectionName = s.Name,
                             Articels = (db.Articles.Where(t => t.SectionId == s.Id).ToList<Article>())

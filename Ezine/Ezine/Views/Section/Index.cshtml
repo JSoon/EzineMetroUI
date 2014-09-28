@@ -1,29 +1,45 @@
-﻿@model IList<Ezine.Models.Section>
+﻿@model IList<Ezine.ViewModels.ArticleList>
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<h1 class="tile-area-title">
+    <a data-url="#" href="/Home/Index" data-direction="rtl">
+        <i class="icon-arrow-left-3 smaller"></i>
+        @Model.First().EzineName
+        <small class="subheader">Contents</small>
+    </a>
+</h1>
 @foreach (var item in @Model)
 {
-    <h1 class="tile-area-title">
-        <a data-url="#" href="/Home/Index" data-direction="rtl">
-            <i class="icon-arrow-left-3 smaller"></i>
-            Season 1
-            <small class="subheader">Contents</small>
-        </a>
-    </h1>
     <div class="tile-group">
-        <div class="tile-group-title"><i class="icon-list smaller on-left-more"></i>@item.Name</div>
+        <div class="tile-group-title">
+            <i class="icon-list smaller on-left-more"></i>
+            @item.SectionName
+        </div>
         <div class="listview">
-            <a data-url="tmpl-1.html" class="list" data-hint="" data-hint-position="top">
-                <div class="list-content">
-                    <img class="icon" src="http://lorempixel.com/124/125/animals/3" alt="">
-                    <div class="data">
-                        <span class="list-title">@article.Title</span>
-                        <span class="list-remark">@article.Author<span class="label label-relay">转</span></span>
+            @foreach (var art in item.Articels)
+            {
+                <a href="/Article/Articel/@art.Id" class="list" data-hint="" data-hint-position="top">
+                    <div class="list-content">
+                        <img class="icon" src="http://lorempixel.com/124/125/animals/3" alt="">
+                        <div class="data">
+                            <span class="list-title">@art.Title</span>
+                            <span class="list-remark">
+                                @art.Author
+                                @if (string.IsNullOrEmpty(art.Source))
+                                {
+                                    <span class="label label-relay">原</span>
+                                }
+                                else
+                                {
+                                    <span class="label label-relay">转</span>
+                                }
+                            </span>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            }
         </div>
     </div>
 }

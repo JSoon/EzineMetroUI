@@ -9,19 +9,25 @@ namespace Ezine.Controllers
 {
     public class SectionController : Controller
     {
-        private ISection repository;
-
-        public SectionController(ISection sectionRepository)
+        private ISection sectionRepository;
+        private IArticle articleRepository;
+        public SectionController(ISection sectionRepository, IArticle articleRepository)
         {
-            repository = sectionRepository;
+            this.sectionRepository = sectionRepository;
+            this.articleRepository = articleRepository;
         }
 
         // GET: Section
         public ActionResult Index(int Id)
         {
-            var sections = repository.GetAlListByEzineId(Id);
 
-            return View(sections);
+            var list = articleRepository.ListBySectionId(Id);
+
+            //return Json(list, JsonRequestBehavior.AllowGet);
+
+            //var sections = repository.GetAlListByEzineId(Id);
+
+            return View(list);
         }
      
     }

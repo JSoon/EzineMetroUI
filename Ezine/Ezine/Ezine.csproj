@@ -431,7 +431,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Article\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -579,6 +578,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Lib\webuploader\0.1.4\img\progress.psd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Article\Articel.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Article\Temp1.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
