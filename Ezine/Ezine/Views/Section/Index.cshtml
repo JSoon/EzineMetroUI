@@ -1,73 +1,49 @@
-﻿
+﻿@model IList<Ezine.ViewModels.ArticleList>
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1 class="tile-area-title">
     <a data-url="#" href="/Home/Index" data-direction="rtl">
         <i class="icon-arrow-left-3 smaller"></i>
-        Season 1
+        @Model.First().EzineName
         <small class="subheader">Contents</small>
     </a>
 </h1>
-<div class="tile-group">
-    <div class="tile-group-title"><i class="icon-list smaller on-left-more"></i>Section 1</div>
-    <div class="listview">
-        <a data-url="tmpl-1.html" class="list" data-hint="思源黑体, 一款好用的开源中文字体" data-hint-position="top">
-            <div class="list-content">
-                <img class="icon" src="http://lorempixel.com/124/125/animals/3" alt="">
-                <div class="data">
-                    <span class="list-title">思源黑体, 一款好用的开源中文字体</span>
-                    <span class="list-remark">NovaDNG<span class="label label-relay">转</span></span>
-                </div>
-            </div>
-        </a>
-        <a data-url="tmpl-2.html" class="list" data-hint="什么是致敬，什么是抄袭？" data-hint-position="top">
-            <div class="list-content">
-                <img class="icon" src="http://lorempixel.com/125/125/animals/6" alt="">
-                <div class="data">
-                    <span class="list-title">什么是致敬，什么是抄袭？</span>
-                    <span class="list-remark">Phoenix小月<span class="label label-original">原</span></span>
-                </div>
-            </div>
-        </a>
+@foreach (var item in @Model)
+{
+    <div class="tile-group">
+        <div class="tile-group-title">
+            <i class="icon-list smaller on-left-more"></i>
+            @item.SectionName
+        </div>
+        <div class="listview">
+            @foreach (var art in item.Articels)
+            {
+                <a href="/Article/Articel/@art.Id" class="list" data-hint="" data-hint-position="top">
+                    <div class="list-content">
+                        <img class="icon" src="http://lorempixel.com/124/125/animals/3" alt="">
+                        <div class="data">
+                            <span class="list-title">@art.Title</span>
+                            <span class="list-remark">
+                                @art.Author
+                                @if (string.IsNullOrEmpty(art.Source))
+                                {
+                                    <span class="label label-relay">原</span>
+                                }
+                                else
+                                {
+                                    <span class="label label-relay">转</span>
+                                }
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
     </div>
-</div><!-- /.tile-group -->
-<div class="tile-group">
-    <div class="tile-group-title"><i class="icon-list smaller on-left-more"></i>Section 2</div>
-    <div class="listview">
-        <a data-url="tmpl-3.html" class="list" data-hint="世界上存在过哪些奇特的古生物？" data-hint-position="top">
-            <div class="list-content">
-                <img class="icon" src="http://lorempixel.com/124/125/animals/9" alt="">
-                <div class="data">
-                    <span class="list-title">世界上存在过哪些奇特的古生物？</span>
-                    <span class="list-remark">狡曈<span class="label label-original">原</span></span>
-                </div>
-            </div>
-        </a>
-        <a data-url="tmpl-4.html" class="list" data-hint="为什么周星驰现在没有拍出以前那么经典搞笑的电影？" data-hint-position="top">
-            <div class="list-content">
-                <img class="icon" src="http://lorempixel.com/125/125/animals/7" alt="">
-                <div class="data">
-                    <span class="list-title">为什么周星驰现在没有拍出以前那么经典搞笑的电影？</span>
-                    <span class="list-remark">胡戈<span class="label label-original">原</span></span>
-                </div>
-            </div>
-        </a>
-        <a class="list" data-hint="对罗永浩和他的锤子手机的负面评价主要是出于哪些方面的原因？" data-hint-position="top">
-            <div class="list-content">
-                <img class="icon" src="http://lorempixel.com/124/125/animals/10" alt="">
-                <div class="data">
-                    <span class="list-title">对罗永浩和他的锤子手机的负面评价主要是出于哪些方面的原因？</span>
-                    <span class="list-remark">贺仙<span class="label label-relay">转</span></span>
-                </div>
-            </div>
-        </a>
-    </div>
-</div><!-- /.tile-group -->
+}
 
-<script src="../lib/metro-ui/2.0.31/min/metro.min.js"></script>
 <script>
     $('#sjTileArea').addClass('animated bounceInRight');
 </script>

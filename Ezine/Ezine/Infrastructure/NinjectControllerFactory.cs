@@ -32,6 +32,7 @@ namespace Ezine.Infrastructure
             ninjectKernel.Bind<IEzine>().To<EzineRepository>();
             ninjectKernel.Bind<ISection>().To<SectionRepository>();
             ninjectKernel.Bind<IAttachment>().To<AttachmentRepository>();
+            ninjectKernel.Bind<IArticle>().To<ArticleRepository>();
    
         }
     }

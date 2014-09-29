@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Ezine.Abstract;
 using Ezine.Models;
+using Ezine.ViewModels;
 
 namespace Ezine.Areas.Manage.Controllers
 {
@@ -42,6 +43,17 @@ namespace Ezine.Areas.Manage.Controllers
             var result = sectionRepository.Save(model);
 
             return Json(result);
+        }
+
+        /// <summary>
+        /// 查询杂志下属的所有章节信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public JsonResult SectionsById(int id)
+        {
+            var result = sectionRepository.GetAlListByEzineId(id);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>
@@ -91,5 +103,6 @@ namespace Ezine.Areas.Manage.Controllers
                 return View();
             }
         }
+
     }
 }

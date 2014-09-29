@@ -1,8 +1,29 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "杂志章节列表";
     Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
 }
 
-<h2>目录页</h2>
-
+<h1>杂志章节列表</h1>
+<div class="alert alert-danger" role="alert">@ViewBag.Message </div>
+<div class="table-responsive" ng-controller="ezineList">
+    <table class="table">
+        <thead>
+            <tr>
+                <td>名称</td>
+                <td>日期</td>
+                <td>管理</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in ezines">
+                <td>{{item.Name}}</td>
+                <td>{{item.PublishDate | formatterDate }}</td>
+                <td>
+                    <a href="/Manage/Section/AddSections/{{item.EzineId}}">添加章节</a>&nbsp;&nbsp;
+                    <a href="/Manage/Section/Edit/{{item.EzineId}}">编辑章节</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

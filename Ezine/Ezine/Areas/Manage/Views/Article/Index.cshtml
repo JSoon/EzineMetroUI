@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+<h2>添加文章</h2>
+<div class="table-responsive" ng-controller="ezineList">
+    <table class="table">
+        <thead>
+            <tr>
+                <td>名称</td>
+                <td>日期</td>
+                <td>管理</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in ezines">
+                <td>{{item.Name}}</td>
+                <td>{{item.PublishDate | formatterDate }}</td>
+                <td>
+                    <a href="/Manage/Article/Add/{{item.EzineId}}">添加文章</a>&nbsp;&nbsp;
+                    <a href="/Manage/Article/ArticleList/{{item.EzineId}}">文章列表</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

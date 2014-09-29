@@ -29,6 +29,7 @@ namespace Ezine.Areas.Manage.Controllers
         /// <returns></returns>
         public JsonResult UploadFile()
         {
+            string result = "";
             int row = 0;
             foreach (string upload in Request.Files)
             {
@@ -64,6 +65,7 @@ namespace Ezine.Areas.Manage.Controllers
                 };
 
                 row = repository.AddFile(file);
+                result += row + ",";
             }
 
             return Json(row);

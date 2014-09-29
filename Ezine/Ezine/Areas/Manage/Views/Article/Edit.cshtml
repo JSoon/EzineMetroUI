@@ -1,0 +1,92 @@
+﻿@model Ezine.ViewModels.EditArticle
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>修改文章</h2>
+
+<form role="form" action="/Manage/Article/Add" method="post" ng-controller="articleCtrl">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label for="EzineName" class="control-label col-md-2">期刊名称</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="EzineName" name="EzineName" value="@Model.EzineName" readonly>
+                <input type="hidden" name="EzineId" id="EzineId" value="@Model.EzineId" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="publishDate" class="control-label col-md-2">章节</label>
+            <div class="col-md-10">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-default" data-toggle="dropdown">
+                        @Model.SectionName <span class="caret"></span>
+                    </button>
+                    <input type="hidden" ng-value="SectionId" name="SectionId" />
+                    <ul class="dropdown-menu animated flipInX" role="menu" aria-labelledby="dLabel">
+                       @foreach (var item in @Model.Sections)
+                       {
+                        <li role="presentation" ng-repeat="item in sections">
+                            <a role="menuitem" tabindex="-1" href="#" rel="@item.Id" ng-click="setSelect(item)">@item.Name</a>
+                        </li>
+                       }
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Title" class="control-label col-md-2">标题</label>
+            <div class="col-md-10">
+                <input size="16" type="text" class="form-control" id="Title" name="Title" value="@Model.Title" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Author" class="control-label col-md-2">作者</label>
+            <div class="col-md-10">
+                <input size="16" type="text" class="form-control" id="Author" name="Author" value="@Model.Author" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Contents" class="control-label col-md-2">内容</label>
+            <div class="col-md-10">
+                <textarea id="Contents" name="Contents" class="form-control" rows="20">@Model.Contents</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Source" class="control-label col-md-2">来源</label>
+            <div class="col-md-10">
+                <input size="16" type="text" class="form-control" id="Source" name="Source" value="@Model.Source" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="保存" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+<div>
+    @Html.ActionLink("返回列表", "Index", "Article")
+</div>
+@Scripts.Render("~/Lib/umeditor/1.2.2/umeditor.config.js")
+@Scripts.Render("~/Lib/umeditor/1.2.2/umeditor.min.js")
+@Scripts.Render("~/Lib/umeditor/1.2.2/lang/zh-cn/zh-cn.js")
+@Scripts.Render("~/Lib/webuploader/0.1.4/dist/webuploader.min.js")
+@Scripts.Render("~/Scripts/upload.js")
+
+<script type="text/javascript">
+    // 生成UMEditor
+    (function ($) {
+        // ajax 载入页面时，切记一定要调用 clearCache 方法，以确保最初的 UMEditor 对象被销毁
+        UM.clearCache('Contents');
+        var editor = UM.getEditor('Contents', {
+            initialFrameWidth: '100%',
+            initialFrameHeight: 300,
+            initialContent: '富文本编辑器',
+            autoClearinitialContent: false
+        });
+    })(jQuery);
+
+</script>

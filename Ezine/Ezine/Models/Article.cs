@@ -11,6 +11,11 @@ namespace Ezine.Models
     public class Article
     {
         public int Id { get; set; }
+
+        /// <summary>
+        /// 章节Id
+        /// </summary>
+        public int EzineId { get; set; }
         
         /// <summary>
         /// 章节Id
@@ -42,11 +47,6 @@ namespace Ezine.Models
         /// </summary>
         public int Agrees { get; set; }
 
-        /// <summary>
-        /// 图片
-        /// </summary>
-        public int AttachmentId { get; set; }
-        
         /// <summary>
         /// 发布日期
         /// </summary>
