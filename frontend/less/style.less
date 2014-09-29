@@ -5,68 +5,87 @@
 
 /*自定义鼠标指针*/
 html {
-    cursor: url(../img/cursor.png) 0 0, auto;
+  cursor: url(../img/cursor.png) 0 0, auto;
 }
+
 /*背景图*/
 body {
-    background: url(../img/bg.jpg) center center no-repeat;
-    background-color: #1d1d1d;
-    background-attachment: fixed;
+  background: url(../img/bg.jpg) center center no-repeat;
+  background-color: #1d1d1d;
+  background-attachment: fixed;
 }
+
 /*ajax loading*/
 #sjLoading {
-    position: fixed;
-    top: 0;
-    z-index: 9999;
-    display: none;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    .bg-transparent(0, 0, 0, 0.8);
-    span {
-        display: inline-block;
-        padding: 20px 35px;
-        color: #455680;
-        font-family: @yaHei;
-        font-weight: bold;
-        background-color: #fff;
-    }
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+  display: none;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  .bg-transparent(0, 0, 0, 0.8);
+  span {
+    display: inline-block;
+    padding: 20px 35px;
+    color: #455680;
+    font-family: @yaHei;
+    font-weight: bold;
+    background-color: #fff;
+  }
 }
+
 /*选中文本背景色*/
 ::selection {
-    background: #359945;
-    color: #fff;
+  background: #359945;
+  color: #fff;
 }
+
 ::-moz-selection {
-    background: #359945;
-    color: #fff;
+  background: #359945;
+  color: #fff;
 }
+
 /*链接鼠标样式*/
 a {
-    cursor: pointer !important;
+  cursor: pointer !important;
 }
+
 /*原创 or 转载标记*/
 .metro .label {
-    padding: 6px;
-    margin: 0 5px;
+  padding: 6px;
+  margin: 0 5px;
 }
+
 .metro .label-relay {
-    color: #fff;
-    background-color: @label-relay;
+  color: #fff;
+  background-color: @label-relay;
 }
+
 .metro .label-original {
-    color: #fff;
-    background-color: @label-original;
+  color: #fff;
+  background-color: @label-original;
 }
+
+/*文章内容*/
+#sjArticleContent {
+  width: 1024px;
+  margin: 0 auto;
+  padding: 30px 40px;
+  line-height: 2;
+  color: #ccc;
+  background: rgba(0, 0, 0, 0.6);
+}
+
 /*版权信息*/
 #sjCopyright {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    line-height: 30px;
-    font-size: 12px;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #999;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  line-height: 30px;
+  font-size: 12px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #999;
 }

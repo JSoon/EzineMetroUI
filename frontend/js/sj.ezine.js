@@ -10,10 +10,10 @@
  * Copyright 2014 J.Soon Personal
  * Released under the MIT license
  *
- * Update Date: 2014-08-29 17:30 pm
+ * Update Date: 2014-09-29 16:07 pm
  */
 
-if ( window.SJ === undefined ) {
+if (window.SJ === undefined) {
     window.SJ = {}
 }
 
@@ -21,87 +21,87 @@ SJ.ezine = {
     /**
      * 初始化
      */
-    init: function() {
+    init: function () {
         // this.freshDisabled();
-        this.scrollHoriz();
+        this.scrollHorizOn();
         // this.ajaxLoad( '#sjTileArea' );
     },
     /**
      * ajax loading tips
      */
-    ajaxLoadingTips: function( tSwitch ) {
-        if ( tSwitch === 'show' ) {
-            $( '#sjLoading' ).remove(); // Make sure there is no #sjLoading existed in the DOM at the beginning
-            var sjLoading = $( '<div id="sjLoading"><span>数据加载中，请稍后 ...</span></div>' );
-            $( 'body' ).append( sjLoading );
-            var txtHeight = $( '#sjLoading > span' ).outerHeight();
-            var top = $( window ).height() / 2 - txtHeight / 2;
-            $( '#sjLoading > span' ).css( 'margin-top', top );
-            $( '#sjLoading' ).show();
-            $( '.hint' ).remove(); // 修复页面切换时 .hint 的不消失 bug
-        } else if ( tSwitch === 'hide' ) {
-            $( '#sjLoading' ).delay( 500 ).fadeOut( function() {
-                $( this ).remove();
-            } );
+    ajaxLoadingTips: function (tSwitch) {
+        if (tSwitch === 'show') {
+            $('#sjLoading').remove(); // Make sure there is no #sjLoading existed in the DOM at the beginning
+            var sjLoading = $('<div id="sjLoading"><span>数据加载中，请稍后 ...</span></div>');
+            $('body').append(sjLoading);
+            var txtHeight = $('#sjLoading > span').outerHeight();
+            var top = $(window).height() / 2 - txtHeight / 2;
+            $('#sjLoading > span').css('margin-top', top);
+            $('#sjLoading').show();
+            $('.hint').remove(); // 修复页面切换时 .hint 的不消失 bug
+        } else if (tSwitch === 'hide') {
+            $('#sjLoading').delay(500).fadeOut(function () {
+                $(this).remove();
+            });
         }
     },
     /**
      * ajax 加载页面
      */
-    ajaxLoad: function( vessel ) {
-        $( vessel ).on( 'click', 'a[data-url]', function() {
-            $( vessel ).removeClass( 'animated bounceInRight bounceInLeft' );
-            var url = $( this ).attr( 'data-url' ),
-                dir = $( this ).attr( 'data-direction' );
-            if ( url ) {
-                $.ajax( {
+    ajaxLoad: function (vessel) {
+        $(vessel).on('click', 'a[data-url]', function () {
+            $(vessel).removeClass('animated bounceInRight bounceInLeft');
+            var url = $(this).attr('data-url'),
+                dir = $(this).attr('data-direction');
+            if (url) {
+                $.ajax({
                     url: url,
                     dataType: 'html'
-                } ).done( function( data, textStatus, jqXHR ) {
+                }).done(function (data, textStatus, jqXHR) {
                     // console.log( $( '.dhint' ) );
-                    $( '.hint' ).remove(); // 修复页面切换时 .hint 的不消失 bug
-                    if ( dir === 'rtl' ) { // 判断页面进入方向，赋予相应的 CSS3 动画
-                        $( vessel ).html( data ).addClass( 'animated bounceInLeft' );
+                    $('.hint').remove(); // 修复页面切换时 .hint 的不消失 bug
+                    if (dir === 'rtl') { // 判断页面进入方向，赋予相应的 CSS3 动画
+                        $(vessel).html(data).addClass('animated bounceInLeft');
                     } else {
-                        $( vessel ).html( data ).addClass( 'animated bounceInRight' );
+                        $(vessel).html(data).addClass('animated bounceInRight');
                     }
-                } ).fail( function( jqXHR, textStatus, errorThrown ) {
+                }).fail(function (jqXHR, textStatus, errorThrown) {
                     // console.log( errorThrown );
-                } );
+                });
             } else {
                 // console.log( 'no url' );
             }
-        } );
+        });
     },
     /**
      * 禁止 F5 和 Ctrl+R 刷新
      */
-    freshDisabled: function() {
-        $( document ).bind( 'keydown keyup', function( e ) {
-            if ( e.which === 116 ) { // F5
-                alert( '禁止快捷键刷新页面' );
+    freshDisabled: function () {
+        $(document).bind('keydown keyup', function (e) {
+            if (e.which === 116) { // F5
+                alert('禁止快捷键刷新页面');
                 return false;
             }
-            if ( e.which === 82 && e.ctrlKey ) { // Ctrl + R
-                alert( '禁止快捷键刷新页面' );
+            if (e.which === 82 && e.ctrlKey) { // Ctrl + R
+                alert('禁止快捷键刷新页面');
                 return false;
             }
-        } );
+        });
     },
     /**
      * 生成随机数
      */
-    randomNum: function( scope ) {
+    randomNum: function (scope) {
         var scope = scope || 100000; // 默认随机数范围 0 到 100,000
-        return Math.floor( Math.random() * scope );
+        return Math.floor(Math.random() * scope);
     },
     /**
      * Determine ie browser version from script @ http:*support.microsoft.com/kb/167820
      */
-    msie: function() {
+    msie: function () {
         var ua = window.navigator.userAgent;
-        var msie = ua.indexOf( "MSIE " );
-        if ( msie > 0 || !!navigator.userAgent.match( /Trident.*rv\:11\./ ) ) { // If Internet Explorer, return version number
+        var msie = ua.indexOf("MSIE ");
+        if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) { // If Internet Explorer, return version number
             // alert(parseInt(ua.substring(msie + 5, ua.indexOf(".", msie))));
             return true;
         } else { // If another browser, return 0
@@ -112,18 +112,23 @@ SJ.ezine = {
     /**
      * 给鼠标滚轮绑定横向滑动事件
      */
-    scrollHoriz: function( speed ) {
+    scrollHorizOn: function (speed) {
         var that = this;
-        $( 'body' ).mousewheel( function( event, delta ) {
+        $('body').on('mousewheel', function (event, delta) {
             var s = speed || 30;
             var ifIE = that.msie();
-            if ( ifIE === true ) {
+            if (ifIE === true) {
                 document.documentElement.scrollLeft -= ( delta * s );
             } else {
                 document.body.scrollLeft -= ( delta * s );
             }
             event.preventDefault();
-        } );
+        });
+    },
+    scrollHorizOff: function (speed) {
+        var that = this;
+        console.log('off mouseweel');
+        $('body').off('mousewheel');
     }
 }
 SJ.ezine.init();
@@ -133,216 +138,220 @@ SJ.ezine.init();
  *
  * description
  */
-var ezineApp = angular.module( 'metroEzine', [
+var ezineApp = angular.module('metroEzine', [
     'ngRoute',
     'metroEzineServices',
     'metroEzineHomePage',
     'metroEzineContentsPage',
     'metroEzineArticlePage'
-] );
+]);
 /**
  * ezineApp routes
  */
-ezineApp.config( [ '$routeProvider',
-    function( $routeProvider ) {
-        $routeProvider.when( '/ezines', {
+ezineApp.config([ '$routeProvider',
+    function ($routeProvider) {
+        $routeProvider.when('/ezines', {
             templateUrl: 'home.html',
             controller: 'homeController'
-        } ).when( '/ezines/:ezineId', {
+        }).when('/ezines/:ezineId', {
             templateUrl: 'contents.html',
             controller: 'contentsController'
-        } ).when( '/ezines/:ezineId/:articleId', {
+        }).when('/ezines/:ezineId/:articleId', {
             templateUrl: 'tmpl-1.html',
             controller: 'articleController'
-        } ).otherwise( {
+        }).otherwise({
             redirectTo: '/ezines'
-        } );
+        });
     }
-] );
+]);
 /**
  * ezineApp directive
  * set the page animate direction
  */
-ezineApp.directive( 'a', [ 'pageDirection',
-    function( pageDirection ) {
+ezineApp.directive('a', [ 'pageDirection',
+    function (pageDirection) {
         return {
             restrict: 'E',
-            link: function( $scope, iElm, iAttrs, controller ) {
-                if ( iAttrs.direction ) {
-                    iElm.on( 'click', function( e ) {
+            link: function ($scope, iElm, iAttrs, controller) {
+                if (iAttrs.direction) {
+                    iElm.on('click', function (e) {
                         // e.preventDefault();
-                        pageDirection.set( iAttrs.direction );
-                    } );
+                        pageDirection.set(iAttrs.direction);
+                    });
                 }
             }
         };
     }
-] );
+]);
 
 /**
  * metroEzineServices module
  *
  * shared services here
  */
-var ezineServices = angular.module( 'metroEzineServices', [] );
-ezineServices.config( [ '$httpProvider',
-    function( $httpProvider ) {
+var ezineServices = angular.module('metroEzineServices', []);
+ezineServices.config([ '$httpProvider',
+    function ($httpProvider) {
         // register the interceptor as a service, intercepts ALL angular ajax http calls
-        $httpProvider.interceptors.push( 'httpInterceptor' );
+        $httpProvider.interceptors.push('httpInterceptor');
     }
-] );
-ezineServices.run( [ '$http',
-    function( $http ) {
+]);
+ezineServices.run([ '$http',
+    function ($http) {
         // set ajax http cache to false globally
         $http.defaults.cache = false;
     }
-] );
-ezineServices.factory( 'httpInterceptor', [ '$q', '$document',
-    function( $q, $document ) {
+]);
+ezineServices.factory('httpInterceptor', [ '$q', '$document',
+    function ($q, $document) {
         var dir = '';
         return {
-            'request': function( config ) {
+            'request': function (config) {
                 // show the loading layer
-                SJ.ezine.ajaxLoadingTips( 'show' );
+                SJ.ezine.ajaxLoadingTips('show');
                 return config;
             },
-            'requestError': function( rejection ) {
+            'requestError': function (rejection) {
                 // do something on error
-                if ( canRecover( rejection ) ) {
+                if (canRecover(rejection)) {
                     return responseOrNewPromise;
                 }
-                return $q.reject( rejection );
+                return $q.reject(rejection);
             },
-            'response': function( response ) {
+            'response': function (response) {
                 // hide the loading layer
-                SJ.ezine.ajaxLoadingTips( 'hide' );
+                SJ.ezine.ajaxLoadingTips('hide');
                 return response;
             },
-            'responseError': function( rejection ) {
+            'responseError': function (rejection) {
                 // do something on error
-                if ( canRecover( rejection ) ) {
+                if (canRecover(rejection)) {
                     return responseOrNewPromise;
                 }
-                return $q.reject( rejection );
+                return $q.reject(rejection);
             }
         };
     }
-] );
+]);
 /**
  * page load direction animation
  */
-ezineServices.factory( 'pageDirection', function() {
+ezineServices.factory('pageDirection', function () {
     var dir = 'rtl'; // init dir
     return {
-        set: function( direction ) {
+        set: function (direction) {
             dir = direction;
         },
-        get: function() {
+        get: function () {
             return dir;
         }
     };
-} );
+});
 
 /**
  * metroEzineHomePage module
  *
  * description
  */
-var ezineHome = angular.module( 'metroEzineHomePage', [] );
+var ezineHome = angular.module('metroEzineHomePage', []);
 /**
  * home page controller
  */
-ezineHome.controller( 'homeController', [ '$scope', '$http', 'pageDirection',
-    function( $scope, $http, pageDirection ) {
+ezineHome.controller('homeController', [ '$scope', '$http', 'pageDirection',
+    function ($scope, $http, pageDirection) {
         // add animate to the #sjTileArea after page loaded
         var direction = pageDirection.get();
-        if ( direction === 'ltr' ) {
-            angular.element( '#sjTileArea' ).addClass( 'animated bounceInLeft' );
-        } else if ( direction === 'rtl' ) {
-            angular.element( '#sjTileArea' ).addClass( 'animated bounceInRight' );
+        // add horizontal scroll event
+        SJ.ezine.scrollHorizOn();
+        if (direction === 'ltr') {
+            angular.element('#sjTileArea').addClass('animated bounceInLeft');
+        } else if (direction === 'rtl') {
+            angular.element('#sjTileArea').addClass('animated bounceInRight');
         }
         // get ezine-list
-        $http( {
+        $http({
             method: 'GET',
-            url: '/js/ezine-list.json',
+            url: '../js/ezine-list.json',
             params: {
                 '_': Math.random()
             }
             // cache: false // not work, don't know why
-        } ).then( function( success ) {
+        }).then(function (success) {
             $scope.ezines = success.data;
-        }, function( fail ) {
+        }, function (fail) {
 
-        } );
+        });
     }
-] );
+]);
 
 /**
  * metroEzineContentsPage module
  *
  * description
  */
-var ezineContents = angular.module( 'metroEzineContentsPage', [] );
+var ezineContents = angular.module('metroEzineContentsPage', []);
 /**
  * contents page controller
  */
-ezineContents.controller( 'contentsController', [ '$scope', '$routeParams', '$http', 'pageDirection',
-    function( $scope, $routeParams, $http, pageDirection ) {
+ezineContents.controller('contentsController', [ '$scope', '$routeParams', '$http', 'pageDirection',
+    function ($scope, $routeParams, $http, pageDirection) {
         // add animate to the #sjTileArea after page loaded
         var direction = pageDirection.get();
-        if ( direction === 'ltr' ) {
-            angular.element( '#sjTileArea' ).addClass( 'animated bounceInLeft' );
-        } else if ( direction === 'rtl' ) {
-            angular.element( '#sjTileArea' ).addClass( 'animated bounceInRight' );
+        // add horizontal scroll event
+        SJ.ezine.scrollHorizOn();
+        if (direction === 'ltr') {
+            angular.element('#sjTileArea').addClass('animated bounceInLeft');
+        } else if (direction === 'rtl') {
+            angular.element('#sjTileArea').addClass('animated bounceInRight');
         }
         $scope.ezineId = $routeParams.ezineId;
         // get ezine-contents
-        $http( {
+        $http({
             method: 'GET',
-            url: '/js/ezine-contents.json',
+            url: '../js/ezine-contents.json',
             params: {
                 'id': $scope.ezineId,
                 '_': Math.random()
             }
-        } ).then( function( success ) {
+        }).then(function (success) {
             $scope.articles = success.data;
             // chapter filter
             var indexedChapters = [];
-            $scope.articlesToFilter = function() {
+            $scope.articlesToFilter = function () {
                 // this will reset the list of indexed chapters each time when the list is looped again
                 indexedChapters = [];
                 return $scope.articles;
             }
-            $scope.filterChapters = function( article ) {
-                var chapterIsNew = ( indexedChapters.indexOf( article.chapter ) == -1 );
-                if ( chapterIsNew ) {
-                    indexedChapters.push( article.chapter );
+            $scope.filterChapters = function (article) {
+                var chapterIsNew = ( indexedChapters.indexOf(article.chapter) == -1 );
+                if (chapterIsNew) {
+                    indexedChapters.push(article.chapter);
                 }
                 return chapterIsNew;
             }
-        }, function( fail ) {
+        }, function (fail) {
 
-        } );
+        });
     }
-] );
+]);
 /**
  * contents page filter
  */
-ezineContents.filter( 'articleSrc', function() {
-    return function( articleSrc ) {
-        if ( articleSrc === true ) {
+ezineContents.filter('articleSrc', function () {
+    return function (articleSrc) {
+        if (articleSrc === true) {
             articleSrc = '原';
         } else {
             articleSrc = '转';
         }
         return articleSrc;
     };
-} );
+});
 /**
  * contents page directive
  */
-ezineContents.directive( 'tileAreaDirective',
-    function() {
+ezineContents.directive('tileAreaDirective',
+    function () {
         // Runs during compile
         return {
             // name: '',
@@ -357,10 +366,10 @@ ezineContents.directive( 'tileAreaDirective',
             // replace: true,
             // transclude: true,
             // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
-            link: function( $scope, iElm, iAttrs, controller ) {
+            link: function ($scope, iElm, iAttrs, controller) {
                 // if the outer loop is the last loop AND the inner loop is ended, then import metro.min.js to make metro hint works for sure
-                if ( !$scope.$parent.$$nextSibling && $scope.$last ) {
-                    angular.element( '#sjTileArea' ).after( '<script src="../lib/metro-ui/2.0.31/min/metro.min.js"></script>' );
+                if (!$scope.$parent.$$nextSibling && $scope.$last) {
+                    angular.element('#sjTileArea').after('<script src="../lib/metro-ui/2.0.31/min/metro.min.js"></script>');
                 }
             }
         };
@@ -372,19 +381,21 @@ ezineContents.directive( 'tileAreaDirective',
  *
  * description
  */
-var ezineArticle = angular.module( 'metroEzineArticlePage', [] );
+var ezineArticle = angular.module('metroEzineArticlePage', []);
 /**
  * article page controller
  */
-ezineArticle.controller( 'articleController', [ '$scope', '$routeParams', 'pageDirection',
-    function( $scope, $routeParams, pageDirection ) {
+ezineArticle.controller('articleController', [ '$scope', '$routeParams', 'pageDirection',
+    function ($scope, $routeParams, pageDirection) {
         // add animate to the #sjTileArea after page loaded
         var direction = pageDirection.get();
-        if ( direction === 'ltr' ) {
-            angular.element( '#sjTileArea' ).addClass( 'animated bounceInLeft' );
-        } else if ( direction === 'rtl' ) {
-            angular.element( '#sjTileArea' ).addClass( 'animated bounceInRight' );
+        // remove horizontal scroll event
+        SJ.ezine.scrollHorizOff();
+        if (direction === 'ltr') {
+            angular.element('#sjTileArea').addClass('animated bounceInLeft');
+        } else if (direction === 'rtl') {
+            angular.element('#sjTileArea').addClass('animated bounceInRight');
         }
         $scope.ezineId = $routeParams.ezineId; // get ezine id in the route
     }
-] );
+]);
