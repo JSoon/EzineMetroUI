@@ -41,5 +41,7 @@ namespace Ezine.Abstract
         /// <returns></returns>
         IList<ArticleList> ListBySectionId(int sectionId);
 
+        EditArticle GetArticleById(int articleId);
+
     }
 }

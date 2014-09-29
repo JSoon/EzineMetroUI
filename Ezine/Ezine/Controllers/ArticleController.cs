@@ -30,52 +30,9 @@ namespace Ezine.Controllers
             var model = repository.GetArticle(id);
             ViewBag.Artcile = model;
 
-            int imges = model.AttachmentId.Split(',').Length;
-            if (imges == 1)
-            {
-                return RedirectToAction("");
-            }
-            else if (imges == 2)
-            {
-                return RedirectToAction("");
-            }
-            else if (imges == 3)
-            {
-                return RedirectToAction("ListArticleBySection");
-            }
-            else
-            {
-                return View(model);
-            }
+            return View(model);
         }
 
-        /// <summary>
-        /// 模板一
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
-        public ActionResult Temp1(Article entity)
-        {
-            string content = entity.Contents;
-            int arrLen = 3;
-            int len = entity.Contents.Length;
-            if (len % 3 != 0)
-            {
-                arrLen = 4;
-            }
-            string[] array = new string[arrLen];
-
-            return View(entity);
-        }
-        /// <summary>
-        /// 模板一
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
-        public ActionResult Temp2(Article entity)
-        {
-            return View(entity);
-        }
         /// <summary>
         /// 模板一
         /// </summary>
@@ -83,6 +40,7 @@ namespace Ezine.Controllers
         /// <returns></returns>
         public ActionResult Temp3(Article entity)
         {
+            entity.Contents = CharContent(entity.Contents);
             return View(entity);
         }
 
@@ -96,6 +54,23 @@ namespace Ezine.Controllers
             var list = repository.ListBySectionId(id);
 
             return Json(list, JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
+        /// 拆分字符串
+        /// </summary>
+        /// <param name="articleContents"></param>
+        /// <returns></returns>
+        public string CharContent(string articleContents)
+        {
+            string content = articleContents;
+            int len = articleContents.Length;
+
+            string str1 = articleContents.Substring(0, len / 3);
+            string str2 = articleContents.Substring(len / 3, len / 3 * 2);
+            string str3 = articleContents.Substring(len / 3 * 2, len);
+
+            return str1 + "@" + str2 + "@" + str3;
         }
     }
 }

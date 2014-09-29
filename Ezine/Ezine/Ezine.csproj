@@ -142,6 +142,7 @@
     <Compile Include="Lib\umeditor\1.2.2\net\Uploader.cs" />
     <Compile Include="ViewModels\ArticleList.cs" />
     <Compile Include="ViewModels\ArticleViewModel.cs" />
+    <Compile Include="ViewModels\EditArticle.cs" />
     <Compile Include="ViewModels\EzineViewModel.cs" />
     <Compile Include="ViewModels\SectionViewModel.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
@@ -581,9 +582,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Article\Articel.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Article\Temp1.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

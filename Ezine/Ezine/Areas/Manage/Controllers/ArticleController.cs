@@ -78,9 +78,9 @@ namespace Ezine.Areas.Manage.Controllers
         /// <returns></returns>
         public ActionResult Edit(int id)
         {
-            var ezine = articleRepository.GetArticle(id);
-            
-            return View(ezine);
+            var articel = articleRepository.GetArticleById(id);
+
+            return View(articel);
         }
     }
 }

@@ -152,7 +152,7 @@ ezineApp.config( [ '$routeProvider',
             templateUrl: 'contents.html',
             controller: 'contentsController'
         } ).when( '/ezines/:ezineId/:articleId', {
-            templateUrl: 'tmpl-1.html',
+            templateUrl: 'tmpl-2.html',
             controller: 'articleController'
         } ).otherwise( {
             redirectTo: '/ezines'
@@ -264,7 +264,7 @@ ezineHome.controller( 'homeController', [ '$scope', '$http', 'pageDirection',
         // get ezine-list
         $http( {
             method: 'GET',
-            url: '/js/ezine-list.json',
+            url: '../js/ezine-list.json',
             params: {
                 '_': Math.random()
             }
@@ -299,7 +299,7 @@ ezineContents.controller( 'contentsController', [ '$scope', '$routeParams', '$ht
         // get ezine-contents
         $http( {
             method: 'GET',
-            url: '/js/ezine-contents.json',
+            url: '../js/ezine-contents.json',
             params: {
                 'id': $scope.ezineId,
                 '_': Math.random()

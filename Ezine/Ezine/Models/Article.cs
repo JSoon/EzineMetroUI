@@ -48,11 +48,6 @@ namespace Ezine.Models
         public int Agrees { get; set; }
 
         /// <summary>
-        /// 图片  多张
-        /// </summary>
-        public string AttachmentId { get; set; }
-        
-        /// <summary>
         /// 发布日期
         /// </summary>
         public DateTime AddDate { get; set; }

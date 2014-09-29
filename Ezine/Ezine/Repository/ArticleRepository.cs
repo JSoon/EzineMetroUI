@@ -69,6 +69,32 @@ namespace Ezine.Repository
         }
 
         /// <summary>
+        /// 文章，章节，期刊信息
+        /// </summary>
+        /// <param name="articleId"></param>
+        /// <returns></returns>
+        public EditArticle GetArticleById(int articleId)
+        {
+            var query = from a in db.Articles
+                        join s in db.Sections on a.EzineId equals s.EzineId
+                        join e in db.EzineInfos on s.EzineId equals e.Id
+                        select new EditArticle
+                        {
+                            EzineId = e.Id,
+                            EzineName = e.Name,
+                            SectionName = (db.Sections.Where(c => c.Id == a.SectionId).First().Name),
+                            Sections = (db.Sections.Where(c => c.EzineId == e.Id).ToList<Section>()),
+                            Title = a.Title,
+                            Author = a.Author,
+                            Contents = a.Contents,
+                            Source = a.Source,
+                            Agrees = a.Agrees
+                        };
+
+            return query.First();
+        }
+
+        /// <summary>
         /// 章节所属的文章列表
         /// </summary>
         /// <param name="sectionId"></param>
