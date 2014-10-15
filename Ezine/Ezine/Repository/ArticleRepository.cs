@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using Ezine.Abstract;
@@ -80,18 +81,21 @@ namespace Ezine.Repository
                         join e in db.EzineInfos on s.EzineId equals e.Id
                         select new EditArticle
                         {
+                            ArticleId = a.Id,
                             EzineId = e.Id,
                             EzineName = e.Name,
-                            SectionName = (db.Sections.Where(c => c.Id == a.SectionId).First().Name),
+                            SectionName = (db.Sections.Where(c => c.Id == a.SectionId).FirstOrDefault().Name),
                             Sections = (db.Sections.Where(c => c.EzineId == e.Id).ToList<Section>()),
                             Title = a.Title,
                             Author = a.Author,
                             Contents = a.Contents,
                             Source = a.Source,
-                            Agrees = a.Agrees
+                            Agrees = a.Agrees,
+                            AddDate = a.AddDate,
+                            SectionId = a.SectionId
                         };
 
-            return query.First();
+            return query.FirstOrDefault<EditArticle>();
         }
 
         /// <summary>
@@ -119,6 +123,14 @@ namespace Ezine.Repository
             return query.ToList<ArticleList>()
                 .Distinct<ArticleList>(new ArticleSectionComparer())
                 .ToList<ArticleList>();
+        }
+
+
+        public bool UpdateArticle(Article model)
+        {
+            db.Articles.Attach(model);
+            db.Entry<Article>(model).State = EntityState.Modified;
+            return db.SaveChanges() > 0;
         }
     }
 

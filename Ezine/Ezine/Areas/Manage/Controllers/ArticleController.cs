@@ -60,6 +60,27 @@ namespace Ezine.Areas.Manage.Controllers
             }
         }
 
+
+
+        /// <summary>
+        /// 修改文章
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Update(Article endity)
+        {
+            var ezine = articleRepository.UpdateArticle(endity);
+            if (ezine)
+            {
+                return View("Index");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
         /// <summary>
         /// 文章列表
         /// </summary>

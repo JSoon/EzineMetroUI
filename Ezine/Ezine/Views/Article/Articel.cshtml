@@ -3,41 +3,13 @@
     ViewBag.Title = "Articel";
 }
 <h1 class="tile-area-title">
-    <a data-direction="ltr" data-href="/Section/Index/1">
+    <a data-direction="ltr" href="/Section/Index/@Model.EzineId">
         <i class="icon-arrow-left-3 smaller"></i>
         <span>@Model.Title</span>
         <small>@Model.Author</small>
     </a>
 </h1>
-<div class="tile-group four">
-    <div class="tile-group-title">
-        <a data-direction="ltr"><i class="icon-clipboard-2 smaller on-left-more"></i>Contents</a>
-        <a><i class="icon-arrow-left smaller on-left-more"></i>Prev One</a>
-        <a><i class="icon-arrow-right smaller on-left-more"></i>Next One</a>
-    </div>
-    <div class="tile quadro quadro-vertical">
-        <div class="tile-content">
-            <div class="padding20" data-role="scrollbox" data-scroll="vertical">
-                @Model.Contents
-            </div>
-        </div>
-    </div>
-</div><!-- /.tile-group -->
-<div class="tile-group four">
-    <div class="tile quadro quadro-vertical">
-        <div class="tile-content">
-            <div class="padding20" data-role="scrollbox" data-scroll="vertical">
-                思源黑体, 一款好用的开源中文字体思源黑体。
-            </div>
-        </div>
-    </div>
-</div><!-- /.tile-group -->
-<div class="tile-group four">
-    <div class="tile quadro quadro-vertical">
-        <div class="tile-content">
-            <div class="padding20" data-role="scrollbox" data-scroll="vertical">
-                思源黑体, 一款好用的开源中文字体思源黑体。
-            </div>
-        </div>
-    </div>
-</div><!-- /.tile-group -->
+<div id="sjArticleContent">
+    @Html.Raw(@Model.Contents)
+</div>
+

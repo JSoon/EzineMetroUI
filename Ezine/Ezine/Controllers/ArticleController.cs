@@ -32,18 +32,6 @@ namespace Ezine.Controllers
 
             return View(model);
         }
-
-        /// <summary>
-        /// 模板一
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
-        public ActionResult Temp3(Article entity)
-        {
-            entity.Contents = CharContent(entity.Contents);
-            return View(entity);
-        }
-
         /// <summary>
         /// 章节下属的文章列表
         /// </summary>
@@ -56,21 +44,5 @@ namespace Ezine.Controllers
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
-        /// <summary>
-        /// 拆分字符串
-        /// </summary>
-        /// <param name="articleContents"></param>
-        /// <returns></returns>
-        public string CharContent(string articleContents)
-        {
-            string content = articleContents;
-            int len = articleContents.Length;
-
-            string str1 = articleContents.Substring(0, len / 3);
-            string str2 = articleContents.Substring(len / 3, len / 3 * 2);
-            string str3 = articleContents.Substring(len / 3 * 2, len);
-
-            return str1 + "@" + str2 + "@" + str3;
-        }
     }
 }

@@ -27,7 +27,12 @@ namespace Ezine.Abstract
         /// <param name="model"></param>
         /// <returns></returns>
         bool AddArticle(Article model);
-
+        /// <summary>
+        /// 更新文章
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        bool UpdateArticle(Article model);
         /// <summary>
         /// 所在杂志的所有文章列表
         /// </summary>
